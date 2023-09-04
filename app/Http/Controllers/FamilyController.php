@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Family;
+use App\Models\Brand;
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -17,7 +19,9 @@ class FamilyController extends Controller
 
     public function create()
     {
-        return view('families.create');
+        $brands = Brand::all();
+        $types = Type::all();
+        return view('families.create',compact('brands','types'));
     }
 
     public function store(Request $request)
@@ -25,7 +29,7 @@ class FamilyController extends Controller
         $request->validate([
             'name' => [
                 'required',
-                Rule::unique('families')->where(function ($query) use ($request) {
+                Rule::unique('printer_families')->where(function ($query) use ($request) {
                     return $query->where('brand_id', $request->input('brand_id'));
                 }),
             ],
@@ -51,7 +55,9 @@ class FamilyController extends Controller
     public function edit($id)
     {
         $family = Family::findOrFail($id);
-        return view('families.edit', compact('family'));
+        $brands = Brand::all();
+        $types = Type::all();
+        return view('families.edit', compact('family','brands','types'));
     }
 
     public function update(Request $request, $id)
@@ -61,7 +67,7 @@ class FamilyController extends Controller
         $request->validate([
             'name' => [
                 'required',
-                Rule::unique('families')->where(function ($query) use ($request, $family) {
+                Rule::unique('printer_families')->where(function ($query) use ($request, $family) {
                     return $query->where('brand_id', $request->input('brand_id'))
                         ->where('id', '!=', $family->id); // Exclude the current family's ID
                 }),

@@ -78,6 +78,12 @@
                 <div data-i18n="Analytics">Types</div>
             </a>
         </li>
+        <li class="menu-item">
+            <a href="{{ route('families.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Family</div>
+            </a>
+        </li>
 
         <!-- Layouts -->
          <li class="menu-item">
