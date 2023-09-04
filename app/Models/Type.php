@@ -11,7 +11,7 @@ class Type extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name','brand_id'];
     protected $dates = ['deleted_at'];
 
     public function brand()

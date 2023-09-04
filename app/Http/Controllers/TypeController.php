@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Type;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -16,7 +17,8 @@ class TypeController extends Controller
 
     public function create()
     {
-        return view('types.create');
+        $brands = Brand::all();
+        return view('types.create',compact('brands'));
     }
 
     public function store(Request $request)
@@ -49,7 +51,8 @@ class TypeController extends Controller
     public function edit($id)
     {
         $type = Type::findOrFail($id);
-        return view('types.edit', compact('type'));
+        $brands = Brand::all();
+        return view('types.edit', compact('type','brands'));
     }
 
     public function update(Request $request, $id)
