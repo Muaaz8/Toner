@@ -30,13 +30,13 @@ Route::get('/form',function(){
 });
 
 // Routes for the BrandController
-Route::resource('brands', BrandController::class);
+Route::resource('brands', App\Http\Controllers\BrandController::class);
 
 // Routes for the TypeController
-Route::resource('types', TypeController::class);
+Route::resource('types', App\Http\Controllers\TypeController::class);
 
 // Routes for the FamilyController
-Route::resource('families', FamilyController::class);
+Route::resource('families', App\Http\Controllers\FamilyController::class);
 
 // Routes for the ModelController
-Route::resource('models', PrinterModelController::class);
+Route::resource('models', App\Http\Controllers\PrinterModelController::class);
