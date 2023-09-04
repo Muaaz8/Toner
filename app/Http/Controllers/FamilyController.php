@@ -34,7 +34,7 @@ class FamilyController extends Controller
                 }),
             ],
             'brand_id' => 'required|integer',
-            'type_id' => 'required|integer',
+            // 'type_id' => 'required|integer',
         ]);
 
         Family::create([

@@ -27,7 +27,7 @@
                                 @forelse ($families as $family)
                                     <tr>
                                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $family->name }}</strong></td>
-                                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $family->type->name }}</strong></td>
+                                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $family->type?$family->type->name:"-" }}</strong></td>
                                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $family->brand->name }}</strong></td>
                                         <td>
                                             <div class="dropdown">

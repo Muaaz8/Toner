@@ -35,8 +35,8 @@ class PrinterModelController extends Controller
                 }),
             ],
             'brand_id' => 'required|integer',
-            'family_id' => 'integer',
-            'type_id' => 'integer',
+            // 'family_id' => 'integer',
+            // 'type_id' => 'integer',
         ]);
 
         PrinterModel::create([

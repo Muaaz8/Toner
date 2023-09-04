@@ -28,8 +28,8 @@
                                 @forelse ($models as $model)
                                     <tr>
                                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $model->name }}</strong></td>
-                                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $model->family->name }}</strong></td>
-                                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $model->type->name }}</strong></td>
+                                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $model->family?$model->family->name:"-" }}</strong></td>
+                                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $model->type?$model->type->name:"-" }}</strong></td>
                                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $model->brand->name }}</strong></td>
                                         <td>
                                             <div class="dropdown">
