@@ -81,7 +81,13 @@
         <li class="menu-item">
             <a href="{{ route('families.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Family</div>
+                <div data-i18n="Analytics">Families</div>
+            </a>
+        </li>
+        <li class="menu-item">
+            <a href="{{ route('models.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                <div data-i18n="Analytics">Models</div>
             </a>
         </li>
 

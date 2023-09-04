@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\PrinterModel;
+use App\Models\Brand;
+use App\Models\Type;
+use App\Models\Family;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -16,7 +19,10 @@ class PrinterModelController extends Controller
 
     public function create()
     {
-        return view('models.create');
+        $brands = Brand::all();
+        $types = Type::all();
+        $families = Family::all();
+        return view('models.create',compact('brands','types','families'));
     }
 
     public function store(Request $request)
@@ -52,7 +58,10 @@ class PrinterModelController extends Controller
     public function edit($id)
     {
         $model = PrinterModel::findOrFail($id);
-        return view('models.edit', compact('model'));
+        $brands = Brand::all();
+        $types = Type::all();
+        $families = Family::all();
+        return view('models.edit', compact('model','brands','types','families'));
     }
 
     public function update(Request $request, $id)
