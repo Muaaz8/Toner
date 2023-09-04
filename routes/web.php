@@ -29,4 +29,14 @@ Route::get('/form',function(){
     return view('form');
 });
 
-Route::resource('branch', App\Http\Controllers\BranchController::class);
+// Routes for the BrandController
+Route::resource('brands', BrandController::class);
+
+// Routes for the TypeController
+Route::resource('types', TypeController::class);
+
+// Routes for the FamilyController
+Route::resource('families', FamilyController::class);
+
+// Routes for the ModelController
+Route::resource('models', PrinterModelController::class);
