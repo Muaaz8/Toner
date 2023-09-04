@@ -11,11 +11,8 @@ class BrandController extends Controller
     public function index()
     {
         $brands = Brand::all();
-
         return view('brands.index', compact('brands'));
     }
-
-
 
     public function create()
     {
@@ -39,7 +36,6 @@ class BrandController extends Controller
     public function show($id)
     {
         $brand = Brand::find($id);
-
         return view('brands.show', compact('brand'));
     }
 
