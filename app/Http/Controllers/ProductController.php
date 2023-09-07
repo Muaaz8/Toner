@@ -8,7 +8,9 @@ use App\Models\PrinterModel;
 use App\Models\Brand;
 use App\Models\Type;
 use App\Models\Family;
+use App\Models\ModelProduct;
 use Illuminate\Validation\Rule;
+use DB;
 
 class ProductController extends Controller
 {
@@ -23,7 +25,8 @@ class ProductController extends Controller
         $brands = Brand::all();
         $types = Type::all();
         $families = Family::all();
-        return view('products.create',compact('brands','types','families'));
+        $models = PrinterModel::all();
+        return view('products.create',compact('brands','types','families','models'));
     }
 
     /**
@@ -47,7 +50,7 @@ class ProductController extends Controller
             'price' => 'numeric|required',
             'description' => 'required',
         ]);
-        Product::create([
+        $product = Product::create([
             'name' => $request->input('name'),
             'brand_id' => $request->input('brand_id'),
             'family_id' => $request->input('family_id'),
@@ -55,7 +58,12 @@ class ProductController extends Controller
             'price' => $request->input('price'),
             'description' => $request->input('description'),
         ]);
-
+        foreach ($request->model_id as $key => $value) {
+            ModelProduct::create([
+                'product_id' => $product->id,
+                'model_id' => $value,
+            ]);
+        }
         return redirect()->route('products.index')->with('success', 'Product created successfully');
     }
 
@@ -67,7 +75,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::with('brand', 'family', 'type')->findOrFail($id);
+        $product = Product::with('brand', 'family', 'type','model')->findOrFail($id);
         return view('products.show', compact('product'));
     }
 
@@ -80,10 +88,12 @@ class ProductController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
+        $product->model_id = DB::table('model_product')->where('product_id',$id)->pluck('model_id')->toArray();
         $brands = Brand::all();
         $types = Type::all();
         $families = Family::all();
-        return view('products.edit', compact('product','brands','types','families'));
+        $models = PrinterModel::all();
+        return view('products.edit', compact('product','brands','types','families','models'));
     }
 
     /**
@@ -119,6 +129,15 @@ class ProductController extends Controller
             'price' => $request->input('price'),
             'description' => $request->input('description'),
         ]);
+        foreach ($request->model_id as $key => $value) {
+            $check = ModelProduct::where('model_id',$value)->where('product_id',$id)->first();
+            if($check == null){
+                ModelProduct::create([
+                    'product_id' => $product->id,
+                    'model_id' => $value,
+                ]);
+            }
+        }
 
         return redirect()->route('products.index')->with('success', 'Product updated successfully');
     }

@@ -57,6 +57,17 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="basic-default-name">Models</label>
+                                    <div class="col-sm-10">
+                                        <select id="country" class="js-example-basic-multiple form-select" name="model_id[]" multiple>
+                                            <option value="">Select</option>
+                                            @foreach ($models as $model)
+                                                <option value="{{ $model->id }}">{{ $model->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="basic-default-name">Product Price</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="basic-default-name" name="price"
