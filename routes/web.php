@@ -7,6 +7,7 @@ use App\Http\Controllers\FamilyController;
 use App\Http\Controllers\PrinterModelController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FilterController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,6 +61,12 @@ Route::resource('models', PrinterModelController::class);
 Route::put('models/{model}/restore', [PrinterModelController::class, 'restore'])->name('models.restore');
 Route::delete('models/{model}/force-delete', [PrinterModelController::class, 'forceDelete'])->name('models.forceDelete');
 Route::get('models/soft/deleted', [PrinterModelController::class, 'softDeleted'])->name('models.softDeleted');
+
+// Routes for the ProductController
+Route::resource('products', ProductController::class);
+Route::put('products/{model}/restore', [ProductController::class, 'restore'])->name('products.restore');
+Route::delete('products/{model}/force-delete', [ProductController::class, 'forceDelete'])->name('products.forceDelete');
+Route::get('products/soft/deleted', [ProductController::class, 'softDeleted'])->name('products.softDeleted');
 
 
 // Routes for the CategoryController
