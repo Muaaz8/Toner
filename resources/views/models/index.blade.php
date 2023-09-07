@@ -12,7 +12,8 @@
                     <h5 class="card-header">Models</h5>
                     <div class="table-responsive text-nowrap">
                         <div class="d-flex justify-content-end">
-                            <a href="{{ route('models.create') }}"><button class="btn btn-primary"> Add New Model </button></a>
+                            <a href="{{ route('models.create') }}"><button class="btn btn-primary me-2"> Add New Model </button></a>
+                            <a href="{{ route('models.softDeleted') }}"><button class="btn btn-primary me-2"> View Deleted Model</button></a>
                         </div>
                         <table class="table">
                             <thead>

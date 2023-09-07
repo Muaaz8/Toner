@@ -12,7 +12,8 @@
                     <h5 class="card-header">Brands</h5>
                     <div class="table-responsive text-nowrap">
                         <div class="d-flex justify-content-end">
-                            <a href="{{ route('brands.create') }}"><button class="btn btn-primary"> Add New Brand</button></a>
+                            <a href="{{ route('brands.create') }}"><button class="btn btn-primary me-2"> Add New Brand</button></a>
+                            <a href="{{ route('brands.softDeleted') }}"><button class="btn btn-primary me-2"> View Deleted Brands</button></a>
                         </div>
                         <table class="table">
                             <thead>

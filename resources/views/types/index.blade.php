@@ -12,7 +12,8 @@
                     <h5 class="card-header">Types</h5>
                     <div class="table-responsive text-nowrap">
                         <div class="d-flex justify-content-end">
-                            <a href="{{ route('types.create') }}"><button class="btn btn-primary"> Add New Type</button></a>
+                            <a href="{{ route('types.create') }}"><button class="btn btn-primary me-2"> Add New Type</button></a>
+                            <a href="{{ route('types.softDeleted') }}"><button class="btn btn-primary me-2"> View Deleted Types</button></a>
                         </div>
                         <table class="table">
                             <thead>

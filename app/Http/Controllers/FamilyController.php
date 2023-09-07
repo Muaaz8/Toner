@@ -94,4 +94,36 @@ class FamilyController extends Controller
 
         return redirect()->route('families.index')->with('success', 'Family deleted successfully');
     }
+
+    public function restore($id)
+    {
+        // Restore Soft Deleted Family
+        $family = Family::withTrashed()->findOrFail($id);
+        $family->restore();
+
+        return redirect()->route('families.index')->with('success', 'Family restored successfully.');
+    }
+
+    public function forceDelete($id)
+    {
+        // Force Delete (Permanently Delete) Soft Deleted Family
+        $family = Family::withTrashed()->findOrFail($id);
+        $family->forceDelete();
+
+        return redirect()->route('families.index')->with('success', 'Family permanently deleted successfully.');
+    }
+
+    public function softDeleted()
+    {
+        $softDeletedFamily = Family::onlyTrashed()->get();
+
+        return view('families.soft_deleted', compact('softDeletedFamily'));
+    }
+
+    public function getSoftDeleted($id)
+    {
+        $softDeletedFamily = Family::onlyTrashed()->findOrFail($id);
+
+        return view('family.soft_deleted_detail', compact('softDeletedFamily'));
+    }
 }

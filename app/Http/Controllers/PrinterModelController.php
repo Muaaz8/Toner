@@ -100,4 +100,37 @@ class PrinterModelController extends Controller
 
         return redirect()->route('models.index')->with('success', 'Model deleted successfully');
     }
+
+    public function restore($id)
+    {
+        // Restore Soft Deleted Model
+        $model = PrinterModel::withTrashed()->findOrFail($id);
+        $model->restore();
+
+        return redirect()->route('models.index')->with('success', 'Model restored successfully.');
+    }
+
+    public function forceDelete($id)
+    {
+        // Force Delete (Permanently Delete) Soft Deleted Model
+        $model = PrinterModel::withTrashed()->findOrFail($id);
+        $model->forceDelete();
+
+        return redirect()->route('models.index')->with('success', 'Model permanently deleted successfully.');
+    }
+
+
+    public function softDeleted()
+    {
+        $softDeletedPrinterModel = PrinterModel::onlyTrashed()->get();
+
+        return view('models.soft_deleted', compact('softDeletedPrinterModel'));
+    }
+
+    public function getSoftDeleted($id)
+    {
+        $softDeletedPrinterModel = PrinterModel::onlyTrashed()->findOrFail($id);
+
+        return view('models.soft_deleted_detail', compact('softDeletedPrinterModel'));
+    }
 }

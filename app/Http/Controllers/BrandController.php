@@ -69,4 +69,36 @@ class BrandController extends Controller
 
         return redirect()->route('brands.index')->with('success', 'Brand deleted successfully');
     }
+
+    public function restore($id)
+    {
+        // Restore Soft Deleted Brand
+        $brand = Brand::withTrashed()->findOrFail($id);
+        $brand->restore();
+
+        return redirect()->route('brands.index')->with('success', 'Brand restored successfully.');
+    }
+
+    public function forceDelete($id)
+    {
+        // Force Delete (Permanently Delete) Soft Deleted Brand
+        $brand = Brand::withTrashed()->findOrFail($id);
+        $brand->forceDelete();
+
+        return redirect()->route('brands.index')->with('success', 'Brand permanently deleted successfully.');
+    }
+
+    public function softDeleted()
+    {
+        $softDeletedBrands = Brand::onlyTrashed()->get();
+
+        return view('brands.soft_deleted', compact('softDeletedBrands'));
+    }
+
+    public function getSoftDeleted($id)
+    {
+        $softDeletedBrand = Brand::onlyTrashed()->findOrFail($id);
+
+        return view('brands.soft_deleted_detail', compact('softDeletedBrand'));
+    }
 }

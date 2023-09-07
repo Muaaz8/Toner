@@ -87,4 +87,36 @@ class TypeController extends Controller
 
         return redirect()->route('types.index')->with('success', 'Type deleted successfully');
     }
+
+    public function restore($id)
+    {
+        // Restore Soft Deleted Type
+        $type = Type::withTrashed()->findOrFail($id);
+        $type->restore();
+
+        return redirect()->route('types.index')->with('success', 'Type restored successfully.');
+    }
+
+    public function forceDelete($id)
+    {
+        // Force Delete (Permanently Delete) Soft Deleted Type
+        $type = Type::withTrashed()->findOrFail($id);
+        $type->forceDelete();
+
+        return redirect()->route('types.index')->with('success', 'Type permanently deleted successfully.');
+    }
+
+    public function softDeleted()
+    {
+        $softDeletedType = Type::onlyTrashed()->get();
+
+        return view('type.soft_deleted', compact('softDeletedType'));
+    }
+
+    public function getSoftDeleted($id)
+    {
+        $softDeletedType = Type::onlyTrashed()->findOrFail($id);
+
+        return view('types.soft_deleted_detail', compact('softDeletedType'));
+    }
 }
