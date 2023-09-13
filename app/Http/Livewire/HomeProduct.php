@@ -43,7 +43,6 @@ class HomeProduct extends Component
                 $families = $filtered['families'];
                 $models = $filtered['models'];
                 $products = $filtered['products'];
-                // $products = Product::with('images')->limit(4)->get();
             }
         }else{
             $types = Type::all();
@@ -52,5 +51,10 @@ class HomeProduct extends Component
             $products = Product::with('images')->limit(4)->get();
         }
         return view('livewire.home-product',compact('brands','types','families','models','products'));
+    }
+
+
+    public function add_to_cart($val){
+        $this->emitTo('component-to-refresh', 'refreshComponent');
     }
 }

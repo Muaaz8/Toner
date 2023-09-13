@@ -105,9 +105,9 @@
                         </div>
                         </div>
                         <div class="cart__">
-                        <a class="a_main__">
+                        <a class="a_main__" wire:click="add_to_cart({{ $item->id }})">
                         <span class="add_to_cart_span">ADD TO CART</span>
-                        <i class="fa-solid fa-bag-shopping shop__bag__pro"></i>
+                            <i class="fa-solid fa-bag-shopping shop__bag__pro"></i>
                         </a>
                     </div>
                 </figure>
