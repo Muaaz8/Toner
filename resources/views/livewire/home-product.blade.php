@@ -58,7 +58,7 @@
                 <div class="col-xs-6 col-sm-4 col-6 col-lg-3 hgh mb-2" >
                 <figure class="prod-box">
                     <!-- "fa-solid fa-heart heart_active  wish_list_heart" -->
-                    <i class= "fa-regular fa-heart wish_list_heart"></i>
+                    {{-- <i class= "fa-regular fa-heart wish_list_heart"></i> --}}
                     <div class="badges-wrap">
                     <!-- <span class="new_badge out_stock_badge">SOLD OUT</span> -->
                     <!-- <span class="new_badge">NEW</span> -->
@@ -99,8 +99,8 @@
                         <div class="eye_compare">
                         <div>
                             <div>
-                            <i class="fa-solid fa-eye eye__Prod mb-2"></i>
-                            <i class="fa-solid fa-arrows-rotate eye__Prod"></i>
+                            {{-- <i class="fa-solid fa-eye eye__Prod mb-2"></i> --}}
+                            {{-- <i class="fa-solid fa-arrows-rotate eye__Prod"></i> --}}
                             </div>
                         </div>
                         </div>
