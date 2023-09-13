@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\PrinterModel;
-use App\Type;
-use App\Family;
-use App\Brand;
+use App\Models\PrinterModel;
+use App\Models\Type;
+use App\Models\Family;
+use App\Models\Brand;
 
 class FilterController extends Controller
 {
@@ -42,6 +42,8 @@ class FilterController extends Controller
         // Merge all models
         $allModels = $brandModels->merge($typesModels)->merge($familiesModels)->unique();
 
+        $brandProducts = $brand->products;
+
         // // Get all brands associated with the brand through its types and families
         // $typesBrands = $brand->types->flatMap(function ($type) {
         //     return $type->brands;
@@ -57,6 +59,7 @@ class FilterController extends Controller
             'types' => $brandTypes,
             'families' => $allFamilies,
             'models' => $allModels,
+            'products' => $brandProducts,
         ];
     }
 
@@ -79,9 +82,12 @@ class FilterController extends Controller
         // Merge all models
         $allModels = $typeModels->merge($familyModels)->unique();
 
+        $typeProducts = $type->products;
+
         return [
             'families' => $typeFamilies,
             'models' => $allModels,
+            'products' => $typeProducts,
         ];
     }
 
@@ -92,8 +98,11 @@ class FilterController extends Controller
         // Get all models directly associated with the family
         $familyModels = $family->models;
 
+        $familyProducts = $family->products;
+
         return [
             'models' => $familyModels,
+            'products' => $familyProducts,
         ];
     }
 }

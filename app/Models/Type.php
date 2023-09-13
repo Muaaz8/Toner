@@ -28,5 +28,10 @@ class Type extends Model
     {
         return $this->hasMany(PrinterModel::class);
     }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
 

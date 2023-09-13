@@ -8,6 +8,9 @@ use App\Http\Controllers\PrinterModelController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\ProductController;
+
+
+use App\Livewire\HomeProduct;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,6 +25,8 @@ use App\Http\Controllers\ProductController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('/', HomeProduct::class);
 
 Auth::routes();
 
