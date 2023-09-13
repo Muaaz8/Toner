@@ -67,6 +67,8 @@ Route::resource('products', ProductController::class);
 Route::put('products/{model}/restore', [ProductController::class, 'restore'])->name('products.restore');
 Route::delete('products/{model}/force-delete', [ProductController::class, 'forceDelete'])->name('products.forceDelete');
 Route::get('products/soft/deleted', [ProductController::class, 'softDeleted'])->name('products.softDeleted');
+Route::get('products_images', [ProductController::class, 'images'])->name('products.images');
+Route::delete('products_images_destroy/{id}', [ProductController::class, 'images_destroy'])->name('products.image_destroy');
 
 
 // Routes for the CategoryController

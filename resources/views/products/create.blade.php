@@ -14,7 +14,7 @@
                             <h5 class="mb-0">Add New Product</h5>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="{{ route('products.store') }}">
+                            <form method="post" action="{{ route('products.store') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="basic-default-name">Product Name</label>
@@ -80,6 +80,12 @@
                                         {{-- <input type="text" class="form-control" id="basic-default-name" name="name"
                                             placeholder="Dell" /> --}}
                                             <textarea name="description" cols="30" rows="5" class="form-control" ></textarea>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="basic-default-name">Images</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="file" id="formFileMultiple" name="image[]" multiple>
                                     </div>
                                 </div>
                                 <div class="row justify-content-end">

@@ -9,6 +9,7 @@ use App\Models\Brand;
 use App\Models\Type;
 use App\Models\Family;
 use App\Models\ModelProduct;
+use App\Models\ImagesProduct;
 use Illuminate\Validation\Rule;
 use DB;
 
@@ -62,6 +63,15 @@ class ProductController extends Controller
             ModelProduct::create([
                 'product_id' => $product->id,
                 'model_id' => $value,
+            ]);
+        }
+        foreach ($request->image as $key => $value) {
+            $extension = $value->getClientOriginalExtension();
+            $filename = time().rand(1,50).'.' . $extension;
+            $value->move(public_path('uploads/'), $filename);
+            ImagesProduct::create([
+                'product_id'=>$product->id,
+                'image'=>'uploads/'.$filename,
             ]);
         }
         return redirect()->route('products.index')->with('success', 'Product created successfully');
@@ -181,5 +191,15 @@ class ProductController extends Controller
         $softDeletedType = Product::onlyTrashed()->get();
 
         return view('products.soft_deleted', compact('softDeletedType'));
+    }
+
+    public function images(){
+        $images = ImagesProduct::join('products','products.id','images_product.product_id')->select('images_product.*','products.name')->get();
+        return view('products.images_list',compact('images'));
+    }
+
+    public function images_destroy($id){
+        ImagesProduct::where('id',$id)->delete();
+        return redirect()->route('products.images')->with('success', 'Brand created successfully');
     }
 }
