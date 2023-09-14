@@ -15,17 +15,9 @@
 
                     <div class="">
                         <div class="cart__main_scr">
-                            <!-- when cart is empty -->
-                            <!-- <div class="text-center mt-5">
-                            <i class="fa-solid fa-bag-shopping no_cart_bag"></i>
-                            <p class="no_pro__p my-3">No products in the cart.</p>
-                            <button class="check_out_btn" onClick={cartOpen}>
-                              RETURN TO SHOP
-                            </button>
-                          </div> -->
-                            <!-- when cart is empty -->
+
                             <!-- ===== when item is present in cart==== -->
-                          @foreach ($data as $dt)
+                          @forelse ($data as $dt)
                             <div class="cart_data__ mb-3 d-flex justify-content-around">
                                 <img src="https://jew.zishstudio.com/wp-content/uploads/2023/08/p3.jpg" />
                                 <span class="shop_del_item shop__del_two">
@@ -54,7 +46,14 @@
                                     </div>
                                 </div>
                             </div>
-                          @endforeach
+                          @empty
+                            <!-- when cart is empty -->
+                            <div class="text-center mt-5">
+                                <i class="fa-solid fa-bag-shopping no_cart_bag"></i>
+                                <p class="no_pro__p my-3">No products in the cart.</p>
+                            </div>
+                            <!-- when cart is empty -->
+                          @endforelse
                             <!-- ===== when item is present in cart==== -->
 
                         </div>
