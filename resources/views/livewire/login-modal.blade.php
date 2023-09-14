@@ -21,9 +21,6 @@
                                             <form method="post" action="{{ route('login') }}">
                                                 @csrf
                                                 <div class=" login__">
-                                                    <h4 class="text-center mb-3">
-                                                        Great to have you back!
-                                                    </h4>
                                                     <div class="mb-3">
                                                         <label htmlFor="email" class="form-label">
                                                             Username or email
@@ -38,9 +35,6 @@
                                                             <label htmlFor="exampleFormControlInput2"
                                                                 class="form-label">
                                                                 Password <span style="color: red;">*</span>
-                                                            </label>
-                                                            <label htmlFor="password" class="form-label">
-                                                                Lost?
                                                             </label>
                                                         </div>
                                                         <input type="password" class="form-control" id="password"

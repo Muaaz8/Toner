@@ -10,7 +10,7 @@ use App\Models\Brand;
 
 class FilterController extends Controller
 {
-    public function filterByBrand($brandId)
+    public static function filterByBrand($brandId)
     {
         $brand = Brand::findOrFail($brandId);
 
@@ -64,7 +64,7 @@ class FilterController extends Controller
     }
 
 
-    public function filterByType($typeId)
+    public static function filterByType($typeId)
     {
         $type = Type::findOrFail($typeId);
 
@@ -91,7 +91,7 @@ class FilterController extends Controller
         ];
     }
 
-    public function filterByFamily($familyId)
+    public static function filterByFamily($familyId)
     {
         $family = Family::findOrFail($familyId);
 
