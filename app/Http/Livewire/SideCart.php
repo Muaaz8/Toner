@@ -2,12 +2,16 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Cart;
 use Livewire\Component;
 
 class SideCart extends Component
 {
+    protected $listeners = ['refreshComponent' => '$refresh'];
+
     public function render()
     {
-        return view('livewire.side-cart');
+        $data = Cart::all();
+        return view('livewire.side-cart',compact('data'));
     }
 }

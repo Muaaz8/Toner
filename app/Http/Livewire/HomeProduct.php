@@ -8,6 +8,8 @@ use App\Models\Type;
 use App\Models\Family;
 use App\Models\PrinterModel;
 use App\Models\Product;
+use App\Models\Cart;
+use Auth;
 use App\Http\Controllers\FilterController;
 
 class HomeProduct extends Component
@@ -55,6 +57,17 @@ class HomeProduct extends Component
 
 
     public function add_to_cart($val){
-        $this->emitTo('component-to-refresh', 'refreshComponent');
+        if(Auth::check()){
+            Cart::create([
+                'user_id' => Auth::user()->id,
+                'product_id' => $val,
+                'price' => 5.22,
+                'quantity' => 1,
+                'status' => 'pending',
+            ]);
+        }else{
+            dd('not logged in.');
+        }
+        $this->emitTo('side-cart', 'refreshComponent');
     }
 }
