@@ -233,6 +233,7 @@
       </div>
     </section>
     <!-- =========== STEPS-SECTION ENDS ==============  -->
+    @livewire('login-modal')
 
     <!-- =========== FOOTER STARTS ==============  -->
     <footer class="footer-section">
@@ -371,218 +372,6 @@
     @livewire('side-cart')
 
 
-    <!-- =========== FOR WHISTLIST TOGGLE STARTS ==============  -->
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightWishlist" aria-labelledby="offcanvasRightWishlistLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title m-auto fs-2" id="offcanvasRightWishlistLabel">Wishlist</h5>
-        <!-- <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
-        <div class="close_btn"  data-bs-dismiss="offcanvas" aria-label="Close">
-          <i class="fa-solid fa-chevron-right"></i>
-        </div>
-      </div>
-      <div class="offcanvas-body">
-        <section>
-          <div>
-            <div class="container">
-
-              <div class="px-4 ">
-                <div class="wishlist__main_scr">
-                  <!-- === If no product add === -->
-
-                    <!-- <div class="text-center mt-5">
-                      <i class="fa-regular fa-heart no_cart_bag" ></i>
-                      <p class="no_pro__p my-3">
-                        No products in the wishlist.
-                      </p>
-                      <button class="check_out_btn" >
-                        RETURN TO SHOP
-                      </button>
-                    </div> -->
-                   <!-- === If no product add === -->
-
-                   <!-- === If  product add === -->
-                      <div
-                      class="cart_data__ mb-3 d-flex justify-content-around"
-
-                    >
-                      <img src="https://jew.zishstudio.com/wp-content/uploads/2023/08/p3.jpg" />
-
-                      <span class="shop_del_item shop__del_two" >
-                        <i
-                          class="fa-solid fa-xmark"
-
-                        ></i>
-                      </span>
-                      <div>
-                        <p class="ms-2 mb-2">BROTHER TN-450 LASER TONER CARTRIDGE - HIGH YIELD - BLACK</p>
-
-                        <p class="ms-2">$45.00 —— 100 in stock</p>
-                        <button class="ms-2 wish_add_cart_btn" >ADD TO CART</button>
-                        </div>
-                    </div>
-                   <!-- === If  product add === -->
-
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </div>
-    <!-- =========== FOR WHISTLIST TOGGLE ENDS ==============  -->
-
-
-
-
-    <!-- =========== LOGIN MODAL STARTS ==============  -->
-    <div>
-      <div>
-        <div
-          class="modal fade"
-          id="exampleModal"
-          tabIndex={-1}
-          aria-labelledby="exampleModalLabel"
-          aria-hidden="true"
-        >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <div class="w-100 text-center position-relative">
-                  <img src="https://jew.zishstudio.com/wp-content/themes/elessi-theme/assets/images/logo.jpg" height={45} width={60} alt="" />
-                  <button
-                    type="button"
-                    class="btn-close modal_close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                    id="closeButton"
-                  ></button>
-                </div>
-              </div>
-              <div class="modal-body">
-                <div class="login__maiN_">
-                  <!-- <div class={`form-section ${signUpToggle}`}> -->
-                  <div class="form-section">
-                    <div class="login-box">
-                      <form onSubmit={handleSubmit}>
-                      <div class=" login__">
-                        <h4 class="text-center mb-3">
-                          Great to have you back!
-                        </h4>
-                        <div class="mb-3">
-                          <label
-                            htmlFor="email"
-                            class="form-label"
-                          >
-                            Username or email
-                            <span style="color: red;">*</span>
-                          </label>
-                          <input
-                            type="email"
-                            class="form-control"
-                            id="email"
-                            name="email"
-                          />
-
-                        </div>
-                        <div class="mb-3">
-                          <div class="d-flex justify-content-between">
-                            <label
-                              htmlFor="exampleFormControlInput2"
-                              class="form-label"
-                            >
-                              Password <span style="color: red;">*</span>
-                            </label>
-                            <label
-                              htmlFor="password"
-                              class="form-label"
-                            >
-                              Lost?
-                            </label>
-                          </div>
-                          <input
-                            type="password"
-                            class="form-control"
-                            id="password"
-                            name="password"
-                          />
-
-                        </div>
-                        <button class="sign_blue_btn" type="submit">
-                        <Spinner color="white"/> SIGN IN TO YOUR ACCOUNT
-                        </button>
-                        <div class="text-center mt-3">
-                          <p>
-                            Not a member?
-                            <span
-
-                            >
-                              <a href="#" class="create-account-link">Create an account</a>
-                            </span>
-                          </p>
-                        </div>
-                      </div>
-                      </form>
-                    </div>
-                    <div class="signup-box">
-                      <form onSubmit={submitForm}>
-                      <div class=" sign_up_">
-                        <h4 class="text-center mb-3">
-                          Great to have you back!
-                        </h4>
-                        <div class="mb-3">
-                          <label
-                            htmlFor="exampleFormControlInput3"
-                            class="form-label"
-                          >
-                            Email address
-                            <span style="color: red;">*</span>
-                          </label>
-                          <input
-                            type="email"
-                            class="form-control"
-                            placeholder="name@example.com"
-                            name="email"
-                            required
-                          >
-                        </div>
-                        <p class="text-center mb-2">
-                          A link to set a new password will be sent to your email address.
-                        </p>
-                        <p class="text-center mb-3">
-                          Your personal data will be used to support your
-                          experience throughout this website, to manage access
-                          to your account, and for other purposes described in
-                          our privacy policy.
-                        </p>
-                        <button class="sign_blue_btn" type="submit">
-                         SETUP YOUR ACCOUNT
-                        </button>
-                        <div class="text-center mt-3">
-                          <p>
-                            Already got an account?
-                            <span
-
-                            >
-                              <a href="#" class="sign-in-link">Sign in here</a>
-                            </span>
-                          </p>
-                        </div>
-                      </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- =========== LOGIN MODAL ENDS ==============  -->
-
-
 
   </main>
   @livewireScripts
@@ -605,7 +394,21 @@
     createAccountLink.classList.add('active-link');
     signInLink.classList.remove('active-link');
   });
-    </script>
+</script>
+<script type="text/javascript">
+    var modalForm = new bootstrap.Modal(document.getElementById('loginModal'), {
+          keyboard: false
+      })
+
+      window.addEventListener('closeModal', event => {
+          modalForm.hide()
+      });
+
+      window.addEventListener('openModal', event => {
+          modalForm.show()
+      });
+
+      </script>
 </body>
 
 </html>

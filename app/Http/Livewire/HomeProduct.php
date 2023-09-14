@@ -65,9 +65,9 @@ class HomeProduct extends Component
                 'quantity' => 1,
                 'status' => 'pending',
             ]);
+            $this->emitTo('side-cart', 'refreshComponent');
         }else{
-            dd('not logged in.');
+            $this->emitTo('login-modal', 'showModal');
         }
-        $this->emitTo('side-cart', 'refreshComponent');
     }
 }
