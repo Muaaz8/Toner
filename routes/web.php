@@ -25,6 +25,9 @@ use App\Livewire\HomeProduct;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/shopping_cart', function () {
+    return view('shopping_cart');
+});
 
 // Route::get('/', HomeProduct::class);
 

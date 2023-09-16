@@ -68,7 +68,7 @@
                             </p>
 
                         </div>
-                        <a href="/shopping-cart">
+                        <a href="{{ url('/shopping_cart') }}">
                             <button class="view_cart_">VIEW CART</button>
                         </a>
                         <a href="/checkout">
