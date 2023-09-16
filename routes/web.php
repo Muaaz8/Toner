@@ -9,8 +9,9 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\ProductController;
 
-
-use App\Livewire\HomeProduct;
+use App\Http\Livewire\HomeProduct;
+use App\Http\Livewire\ShoppingCart;
+use App\Http\Livewire\Checkout;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,23 +26,14 @@ use App\Livewire\HomeProduct;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/shopping_cart', function () {
-    return view('shopping_cart');
-});
 
-// Route::get('/', HomeProduct::class);
+Route::get('/shopping_cart',ShoppingCart::class)->name('shopping_cart');
+Route::get('/checkout',Checkout::class)->name('checkout');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dashboard',[App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
-// Route::get('/temp',function(){
-//     $user = DB::table('users')->paginate(5);
-//     return view('temp',compact('user'));
-// });
-// Route::get('/form',function(){
-//     return view('form');
-// });
 
 // Routes for the BrandController
 Route::resource('brands', BrandController::class);

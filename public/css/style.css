@@ -2659,7 +2659,7 @@ header a {
   }
 
   .cart_subtotal_main {
-    border-bottom: 1px solid #eee;
+    /* border-bottom: 1px solid #eee; */
     padding-top: 18px;
   }
 

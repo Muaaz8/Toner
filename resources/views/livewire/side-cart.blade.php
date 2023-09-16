@@ -68,10 +68,10 @@
                             </p>
 
                         </div>
-                        <a href="{{ url('/shopping_cart') }}">
+                        <a href="{{ route('shopping_cart') }}">
                             <button class="view_cart_">VIEW CART</button>
                         </a>
-                        <a href="/checkout">
+                        <a href="{{ route('checkout') }}">
 
                             <button class="check_out_btn">CHECKOUT</button>
                         </a>

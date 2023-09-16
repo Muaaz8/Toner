@@ -144,9 +144,11 @@
                                     </h4>
                                 </div>
                                 <div>
-                                    <button class="proceed_to_cheCK">
-                                        Proceed to checkout
-                                    </button>
+                                    <a href="/checkout" wire:navigate.hover>
+                                        <button class="proceed_to_cheCK">
+                                            Proceed to checkout
+                                        </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

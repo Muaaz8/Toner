@@ -133,8 +133,7 @@
                             </div>
                         </div>
                         <div class="col-md-4">
-                            {{-- <Link to="/checkout"> --}}
-                            <div class="d-flex align-items-center order_sub_steps">
+                            <div class="d-flex align-items-center {{ url()->current() == "http://127.0.0.1:8000/checkout"? "":"order_sub_steps" }}">
                                 <div>
                                     <p class="steps_count__">02</p>
                                 </div>
@@ -145,7 +144,6 @@
                                     </p>
                                 </div>
                             </div>
-                            {{-- </Link> --}}
                         </div>
                         <div class="col-md-4">
                             <div class="d-flex align-items-center order_sub_steps">
@@ -164,8 +162,8 @@
         </section>
         <!-- =========== STEPS-SECTION ENDS ==============  -->
 
-
-        @livewire('shopping-cart')
+        {{ $slot }}
+        {{-- @livewire('shopping-cart') --}}
 
 
 

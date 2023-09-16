@@ -20,7 +20,7 @@ class ShoppingCart extends Component
             $data = [];
             $total = 0;
         }
-        return view('livewire.shopping-cart',compact('data','total'));
+        return view('livewire.shopping-cart',compact('data','total'))->layout('shopping_cart');
     }
 
     public function increment($id){
