@@ -58,13 +58,20 @@ class HomeProduct extends Component
 
     public function add_to_cart($val){
         if(Auth::check()){
-            Cart::create([
-                'user_id' => Auth::user()->id,
-                'product_id' => $val,
-                'price' => 5.22,
-                'quantity' => 1,
-                'status' => 'pending',
-            ]);
+            $product = Product::findorfail($val);
+            $check = Cart::where('user_id',Auth::user()->id)->where('product_id',$val)->where('status','pending')->first();
+            if($check != null){
+                $check->quantity += 1;
+                $check->save();
+            }else{
+                Cart::create([
+                    'user_id' => Auth::user()->id,
+                    'product_id' => $val,
+                    'price' => $product->price,
+                    'quantity' => 1,
+                    'status' => 'pending',
+                ]);
+            }
             $this->emitTo('side-cart', 'refreshComponent');
         }else{
             $this->emitTo('login-modal', 'showModal');
