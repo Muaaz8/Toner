@@ -12,8 +12,9 @@ class ShoppingCart extends Component
     public function render()
     {
         if(Auth::check()){
-            $data = Cart::with(['products','products.images'])->where('user_id',auth()->user()->id)->get();
+            $data = Cart::with(['products','products.images'])->where('user_id',auth()->user()->id)->where('status','pending')->get();
             $total = Cart::where('user_id', auth()->user()->id)
+            ->where('status','pending')
             ->select(DB::raw('SUM(quantity * price) as total'))
             ->value('total');
         }else{
