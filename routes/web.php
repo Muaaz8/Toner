@@ -87,3 +87,6 @@ Route::get('filter/types/{type_id}', [FilterController::class, 'filterByType'])-
 
 // Route for filtering data by family_id in FilterController
 Route::get('filter/families/{family_id}', [FilterController::class, 'filterByFamily'])->name('filter.families');
+
+
+Route::get('admin/all/orders', [App\Http\Controllers\HomeController::class, 'all_orders'])->name('orders');
