@@ -460,7 +460,7 @@
             </div>
         </div>
             @livewire('side-cart')
-        </div>
+    </div>
 
   </main>
   @livewireScripts

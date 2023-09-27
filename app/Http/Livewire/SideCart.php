@@ -66,7 +66,12 @@ class SideCart extends Component
         }else{
             $cookie_data = stripslashes(Cookie::get('shopping_cart'));
             $cart_data = json_decode($cookie_data);
-            $cart_data[$id]->quantity--;
+            if($cart_data[$id]->quantity == 1){
+                unset($cart_data[$id]);
+                $cart_data = array_values($cart_data);
+            }else{
+                $cart_data[$id]->quantity--;
+            }
             $item_data = json_encode($cart_data);
             $minutes = 60;
             Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));
@@ -82,6 +87,7 @@ class SideCart extends Component
             $cookie_data = stripslashes(Cookie::get('shopping_cart'));
             $cart_data = json_decode($cookie_data);
             unset($cart_data[$id]);
+            $cart_data = array_values($cart_data);
             $item_data = json_encode($cart_data);
             $minutes = 60;
             Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));

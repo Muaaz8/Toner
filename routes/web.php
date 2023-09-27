@@ -27,6 +27,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/all_product', function () {
+    return view('all_products');
+})->name('all_products');
+
+Route::get('/product_detail/{id}', function ($id) {
+    return view('product_detail',compact('id'));
+})->name('product_detail');
+
 Route::get('/shopping_cart',ShoppingCart::class)->name('shopping_cart');
 Route::get('/checkout',Checkout::class)->name('checkout');
 

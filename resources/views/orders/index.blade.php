@@ -31,9 +31,9 @@
                                 @forelse ($orders as $order)
                                     <tr>
                                         <td>{{ $order->id }}</td>
-                                        <td>{{ $order->user->name }}</td>
+                                        <td>{{ $order->user? $order->user->name:"Guest" }}</td>
                                         <td>{{ $order->price }}</td>
-                                        <td id="status{{ $order->id }}">{{ Str::upper($order->status) }}</td>
+                                        <td>{{ Str::upper($order->status) }}</td>
                                         <td><a href="{{ route('order_detail_page',['id'=>$order->id]) }}"><button type="button" class="btn btn-primary">View</button></a></td>
                                     </tr>
                                 @empty

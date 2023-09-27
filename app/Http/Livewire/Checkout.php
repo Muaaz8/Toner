@@ -8,10 +8,13 @@ use App\Models\OrderDetails;
 use Livewire\Component;
 use Auth;
 use DB;
+use App\Models\Product;
+use Illuminate\Support\Facades\Cookie;
+
 
 class Checkout extends Component
 {
-    public $cart_items;
+    public $cart_items = [];
     public $total;
 
     public $first_name;
@@ -50,10 +53,22 @@ class Checkout extends Component
             ->select(DB::raw('SUM(quantity * price) as total'))
             ->value('total');
         }else{
-            $data = [];
-            $this->total = 0;
+            if(Cookie::get('shopping_cart')){
+                $cookie_data = stripslashes(Cookie::get('shopping_cart'));
+                $data = json_decode($cookie_data);
+                $this->total = 0;
+                foreach ($data as $key => $value) {
+                    $value->products = Product::with('images')->where('id',$value->product_id)->first();
+                    $this->total += ($value->quantity*$value->price);
+                }
+            }else{
+                $data = [];
+                $this->total = 0;
+            }
         }
-        $this->cart_items = $data;
+        if(Auth::check()){
+            $this->cart_items = $data;
+        }
         return view('livewire.checkout',compact('data'))->layout('shopping_cart');
     }
 
@@ -78,16 +93,30 @@ class Checkout extends Component
             'price' => $this->total,
         ]);
 
-        foreach ($this->cart_items as $key => $value) {
-            OrderDetails::create([
-                'order_id' => $order->id,
-                'product_id'=> $value->product_id,
-                'product_price' => $value->price,
-                'quantity' => $value->quantity,
-            ]);
-            $item = Cart::find($value->id);
-            $item->status = "order-placed";
-            $item->save();
+        if(Auth::check()){
+            foreach ($this->cart_items as $key => $value) {
+                OrderDetails::create([
+                    'order_id' => $order->id,
+                    'product_id'=> $value->product_id,
+                    'product_price' => $value->price,
+                    'quantity' => $value->quantity,
+                ]);
+                $item = Cart::find($value->id);
+                $item->status = "order-placed";
+                $item->save();
+            }
+        }else{
+            $cookie_data = stripslashes(Cookie::get('shopping_cart'));
+            $data = json_decode($cookie_data);
+            foreach ($data as $key => $value) {
+                OrderDetails::create([
+                    'order_id' => $order->id,
+                    'product_id'=> $value->product_id,
+                    'product_price' => $value->price,
+                    'quantity' => $value->quantity,
+                ]);
+            }
+            Cookie::queue(Cookie::forget('cookieName'));
         }
 
         return redirect()->to('/');
