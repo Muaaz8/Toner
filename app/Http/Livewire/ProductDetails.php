@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+use App\Models\Product;
 
 class ProductDetails extends Component
 {
@@ -14,6 +15,7 @@ class ProductDetails extends Component
 
     public function render()
     {
-        return view('livewire.product-details');
+        $data = Product::with('images')->find($this->prod_id);
+        return view('livewire.product-details',compact('data'));
     }
 }
