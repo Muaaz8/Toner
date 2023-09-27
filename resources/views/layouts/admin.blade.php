@@ -12,6 +12,7 @@
     <title>@yield('title')</title>
 
     <meta name="description" content="" />
+    @yield('top_script')
     @include('components.admin_topscript')
 </head>
 
@@ -34,4 +35,5 @@
     </div>
     <!-- / Layout wrapper -->
     @include('components.admin_bottomscript')
+    @yield('bottom_script')
 </body>

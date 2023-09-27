@@ -8,13 +8,20 @@
     <div class="content-wrapper">
         <div class="container-xxl flex-grow-1 container-p-y">
             <div class="row">
+                @if (session('success'))
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endif
                 <div class="card">
                     <h5 class="card-header">Orders</h5>
                     <div class="table-responsive text-nowrap">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>User Id</th>
+                                    <th>Id</th>
+                                    <th>User Name</th>
                                     <th>Price</th>
                                     <th>Status</th>
                                     <th>Actions</th>
@@ -22,12 +29,17 @@
                             </thead>
                             <tbody class="table-border-bottom-0">
                                 @forelse ($orders as $order)
-                                    <td>{{ $order->user_id }}</td>
-                                    <td>{{ $order->price }}</td>
-                                    <td>{{ Str::upper($order->status) }}</td>
-                                    <td><a href=""><button type="button" class="btn btn-primary">View</button></a></td>
+                                    <tr>
+                                        <td>{{ $order->id }}</td>
+                                        <td>{{ $order->user->name }}</td>
+                                        <td>{{ $order->price }}</td>
+                                        <td id="status{{ $order->id }}">{{ Str::upper($order->status) }}</td>
+                                        <td><a href="{{ route('order_detail_page',['id'=>$order->id]) }}"><button type="button" class="btn btn-primary">View</button></a></td>
+                                    </tr>
                                 @empty
-
+                                    <tr>
+                                        <td class="text-center" colspan="4">No Orders Yet</td>
+                                    </tr>
                                 @endforelse
                             </tbody>
                         </table>

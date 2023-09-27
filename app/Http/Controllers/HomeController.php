@@ -33,7 +33,24 @@ class HomeController extends Controller
     }
 
     public function all_orders(){
-        $orders = Order::all();
+        $orders = Order::with(['user'])->get();
         return view('orders.index',compact('orders'));
+    }
+
+    public function order_detail($id){
+        $order = Order::with(['user','details','details.products'])->find($id);
+        return view('orders.detail',compact('order'));
+    }
+
+    public function order_edit($id){
+        $order = Order::find($id);
+        return view('orders.edit',compact('order'));
+    }
+
+    public function order_update($id,Request $request){
+        $order = Order::find($id);
+        $order->status = \Str::slug($request->status);
+        $order->save();
+        return redirect()->route('orders')->with('success','Status Changed Successfully for the order.');
     }
 }
