@@ -27,43 +27,83 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($data as $dt)
-                                            <tr>
-                                                <td>
-                                                    <span class="shop_del_item" wire:click="remove({{ $dt->id }})">
-                                                        <i class="fa-solid fa-xmark"></i>
-                                                    </span>
-                                                </td>
-                                                <td>
-                                                    <img src="{{ $dt->products->images != '[]'
-                                                        ? $dt->products->images[0]->image
-                                                        : 'https://jew.zishstudio.com/wp-content/uploads/2023/08/p3.jpg' }}"
-                                                        class="" alt="" height="80" width="60" />
-                                                </td>
-                                                <td>
-                                                    <p style="width: 150px;">{{ $dt->products->name }}</p>
-                                                </td>
-                                                <td>
-                                                    $ {{ $dt->price }}
-                                                </td>
-                                                <td>
-                                                    <div class="quantity">
-                                                        <input disabled value={{ $dt->quantity }} type="text" />
-                                                        <a class="plus" wire:click="increment({{ $dt->id }})">
-                                                            +
-                                                        </a>
-                                                        <a class="minus" wire:click="decrement({{ $dt->id }})">
-                                                            -
-                                                        </a>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <span class="shopp_total_amount">
-                                                        $ {{ $dt->quantity * $dt->price }}
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                        @if (Auth::check())
+                                            @foreach ($data as $dt)
+                                                <tr>
+                                                    <td>
+                                                        <span class="shop_del_item" wire:click="remove({{ $dt->id }})">
+                                                            <i class="fa-solid fa-xmark"></i>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <img src="{{ $dt->products->images != '[]'
+                                                            ? $dt->products->images[0]->image
+                                                            : 'https://jew.zishstudio.com/wp-content/uploads/2023/08/p3.jpg' }}"
+                                                            class="" alt="" height="80" width="60" />
+                                                    </td>
+                                                    <td>
+                                                        <p style="width: 150px;">{{ $dt->products->name }}</p>
+                                                    </td>
+                                                    <td>
+                                                        $ {{ $dt->price }}
+                                                    </td>
+                                                    <td>
+                                                        <div class="quantity">
+                                                            <input disabled value={{ $dt->quantity }} type="text" />
+                                                            <a class="plus" wire:click="increment({{ $dt->id }})">
+                                                                +
+                                                            </a>
+                                                            <a class="minus" wire:click="decrement({{ $dt->id }})">
+                                                                -
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="shopp_total_amount">
+                                                            $ {{ $dt->quantity * $dt->price }}
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            @foreach ($data as $key => $dt)
+                                                <tr>
+                                                    <td>
+                                                        <span class="shop_del_item" wire:click="remove({{ $key }})">
+                                                            <i class="fa-solid fa-xmark"></i>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <img src="{{ $dt->products->images != '[]'
+                                                            ? $dt->products->images[0]->image
+                                                            : 'https://jew.zishstudio.com/wp-content/uploads/2023/08/p3.jpg' }}"
+                                                            class="" alt="" height="80" width="60" />
+                                                    </td>
+                                                    <td>
+                                                        <p style="width: 150px;">{{ $dt->products->name }}</p>
+                                                    </td>
+                                                    <td>
+                                                        $ {{ $dt->price }}
+                                                    </td>
+                                                    <td>
+                                                        <div class="quantity">
+                                                            <input disabled value={{ $dt->quantity }} type="text" />
+                                                            <a class="plus" wire:click="increment({{ $key }})">
+                                                                +
+                                                            </a>
+                                                            <a class="minus" wire:click="decrement({{ $key }})">
+                                                                -
+                                                            </a>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <span class="shopp_total_amount">
+                                                            $ {{ $dt->quantity * $dt->price }}
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
