@@ -27,7 +27,7 @@
         <div class="container">
           <div class="row">
             <div class="text-end">
-              <span class="me-4"><a href="">Shipping</a></span>
+              <span class="me-4"><a href="/shipping_and_tracking">Shipping</a></span>
                 @if (Auth::check())
                     <span class="nav-item dropdown me-3"><i
                             class="fa-regular fa-circle-user me-2"></i>{{ Auth::user()->name }}</span>

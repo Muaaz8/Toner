@@ -13,4 +13,8 @@ class ModelProduct extends Model
         'product_id',
         'model_id',
     ];
+
+    public function model(){
+        return $this->belongsTo(PrinterModel::class);
+    }
 }

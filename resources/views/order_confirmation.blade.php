@@ -4,45 +4,31 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Shopping Cart</title>
+    <title>Shopping cart</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    @livewireStyles
 </head>
 
 <body>
     <main>
         <!-- =========== HEADER Starts ==============  -->
+
         <section>
+
             <header class="bg-light py-2">
                 <div class="container">
                     <div class="row">
                         <div class="text-end">
                             <span class="me-4"><a href="/shipping_and_tracking">Shipping</a></span>
                             <!-- <span data-bs-toggle="modal" data-bs-target="#exampleModal">
-                  &nbsp; Login / Register
-                </span> -->
-                            @if (Auth::check())
-                                <span class="nav-item dropdown me-3"><i
-                                        class="fa-regular fa-circle-user me-2"></i>{{ Auth::user()->name }}</span>
-                                {{-- <span class="nav-item dropdown me-3"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</span> --}}
-                                <span><a href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                          document.getElementById('logout-form').submit();"><i
-                                            class="fa fa-sign-out" aria-hidden="true">
-                                            {{ __('Logout') }}
-                                        </i></a></span>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                            @else
-                                <span data-bs-toggle="modal" data-bs-target="#loginModal" style="cursor:pointer;"><i
-                                        class="fa-regular fa-circle-user me-2"></i>Login / Register</span>
-                            @endif
+                &nbsp; Login / Register
+              </span> -->
+                            <span data-bs-toggle="modal" data-bs-target="#exampleModal"><i
+                                    class="fa-regular fa-circle-user me-2"></i>Login / Register</span>
                         </div>
                     </div>
                 </div>
@@ -73,22 +59,22 @@
                                 <a class="nav-link" href="#">Contact</a>
                             </li>
                             <!-- <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Dropdown
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li>
-                      <hr class="dropdown-divider">
-                    </li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </li> -->
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Dropdown
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li> -->
 
                         </ul>
-                        {{-- <div class="navbar_icons">
+                        <div class="navbar_icons">
                             <ul class="d-flex">
                                 <li><i class="fa-solid fa-bag-shopping me-3" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasRightCart" aria-controls="offcanvasRightCart"></i>
@@ -100,7 +86,7 @@
                                 <li><i class="fa-solid fa-magnifying-glass me-3" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"></i></li>
                             </ul>
-                        </div> --}}
+                        </div>
                         <!-- <button class="btn btn-outline-dark fw-bold" type="submit">Contact Us</button> -->
                     </div>
                 </div>
@@ -108,62 +94,136 @@
         </section>
         <!-- =========== HEADER ENDS ==============  -->
 
-        <section class="order__steps_mob">
-            <div class="container-fluid">
-                <div class="px-2 px-md-5">
-                    <div class="row">
-                        <p class="steps__heading text-center">SHOPPING CART</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="order__steps">
-            <div class="container">
-                <div class="px-4 ">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="d-flex align-items-center">
-                                <div>
-                                    <p class="steps_count__">01</p>
-                                </div>
-                                <div class="ms-2">
-                                    <p class="steps__heading">SHOPPING CART</p>
-                                    <p class="steps__subheading">Manage Your Items List</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="d-flex align-items-center {{ url()->current() == "http://127.0.0.1:8000/checkout"? "":"order_sub_steps" }}">
-                                <div>
-                                    <p class="steps_count__">02</p>
-                                </div>
-                                <div class="ms-2">
-                                    <p class="steps__heading">CHECKOUT DETAILS</p>
-                                    <p class="steps__subheading">
-                                        Checkout Your Items List
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="d-flex align-items-center order_sub_steps">
-                                <div>
-                                    <p class="steps_count__">03</p>
-                                </div>
-                                <div class="ms-2">
-                                    <p class="steps__heading">ORDER COMPLETE</p>
-                                    <p class="steps__subheading">Review Your Order</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- =========== STEPS-SECTION ENDS ==============  -->
+        <!-- =========== TOP-BANNER-SECTION STARTS ==============  -->
 
-        {{ $slot }}
-        {{-- @livewire('shopping-cart') --}}
+        <section class="container-fluid products_main_banner">
+            <div class="container">
+                <div class="banner_content">
+                    <h4>Order Received</h4>
+                    <div>
+                        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =========== TOP-BANNER-SECTION ENDS ==============  -->
+
+        <!-- =========== ORDER-CONFIRM STARTS ==============  -->
+
+        <section>
+            <div class="mt-4 mb-5">
+                <div class="container">
+                    <div class="main__order_rec">
+                        <p class="order_thank_p">
+                            Thank you. Your order has been received.
+                        </p>
+                        <div>
+                            <ul class="order__ul_">
+                                <li>
+                                    <p>Order Number</p>
+                                    <p class="orderthank_next">{{ $data->id }}</p>
+                                </li>
+                                <li>
+                                    <p>Date</p>
+                                    <p class="orderthank_next">{{ date('Y-m-d',strtotime($data->created_at)) }}</p>
+                                </li>
+                                <li>
+                                    <p>Total</p>
+                                    <p class="orderthank_next">$ {{ $data->price }}</p>
+                                </li>
+                                <li>
+                                    <p>Payment Method</p>
+                                    <p class="orderthank_next">
+                                        COD
+                                    </p>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-5">
+                            <h3 class="text-center">Order Details</h3>
+                            <div class="mt-3">
+                                <table class="table table_main_bor">
+                                    <tbody>
+                                        @forelse ($data->details as $item)
+                                            <tr>
+                                                <th>
+                                                    <p class="order__item_pad">
+                                                        {{ $item->products->name }} × {{ $item->quantity }}
+                                                    </p>
+                                                </th>
+                                                <th>
+                                                    <p class="order__item_pad order_detail_sec_th">
+                                                        $ {{ $item->quantity*$item->product_price }}
+                                                    </p>
+                                                </th>
+                                            </tr>
+                                        @empty
+
+                                        @endforelse
+                                    </tbody>
+                                    <tfoot class="t_foo_bg">
+                                        <tr>
+                                            <th class="td_border_n">
+                                                <p class="order_det_amounts_D pt-2">Subtotal:</p>
+                                            </th>
+                                            <th class="td_border_n">
+                                                <p class="order_detail_sec_th pt-2">$ {{ $data->price }}</p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th class="td_border_n">
+                                                <p class="order_det_amounts_D">Shipping:</p>
+                                            </th>
+                                            <th class="td_border_n">
+                                                <p class="order_detail_sec_th">
+
+                                                    <span class="via_del_fs">
+                                                        Free shipping
+                                                    </span>
+                                                </p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <p class="order_det_amounts_D mb-2">
+                                                    Payment method:
+                                                </p>
+                                            </th>
+                                            <th>
+                                                <p class="order_detail_sec_th mb-2">
+                                                    COD (Credited within 2-3 Working
+                                                    Days)
+                                                </p>
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th class="td_border_n">
+                                                <p class="tot_Order_head">TOTAL:</p>
+                                            </th>
+                                            <th class="td_border_n">
+                                                <p class="order_detail_sec_th tot_Order_head total_am_color">
+                                                    $ {{ $data->price }}
+                                                </p>
+                                            </th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a href="/"><button class="btn btn-primary text-center"> Go to Home Page </button></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =========== ORDER-CONFIRM ENDS ==============  -->
+
 
 
 
@@ -247,8 +307,8 @@
         </footer>
 
         <!-- =========== FOOTER ENDS ==============  -->
-    </main>
-    @livewireScripts
+
+      </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>

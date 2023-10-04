@@ -119,6 +119,6 @@ class Checkout extends Component
             Cookie::queue(Cookie::forget('cookieName'));
         }
 
-        return redirect()->to('/');
+        return redirect()->to('/order_confirmation/'.$order->id);
     }
 }

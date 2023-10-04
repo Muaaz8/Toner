@@ -6,22 +6,34 @@
                     <div class="vehicle-detail-banner banner-content clearfix">
                         <div class="banner-slider">
                             <div class="slider slider-for">
-                                @foreach ($data->images as $image)
+                                @forelse ($data->images as $image)
                                     <div class="slider-banner-image">
                                         <img src="{{ env('APP_URL').$image->image }}"
                                             alt="Car-Image">
                                     </div>
-                                @endforeach
+                                @empty
+                                    <div class="slider-banner-image">
+                                        <img src="https://jew.zishstudio.com/wp-content/uploads/2018/02/p1.jpg"
+                                            alt="Car-Image">
+                                    </div>
+                                @endforelse
                             </div>
                             <div class="slider slider-nav thumb-image">
-                                @foreach ($data->images as $image)
+                                @forelse ($data->images as $image)
                                 <div class="thumbnail-image">
                                     <div class="thumbImg">
                                         <img src="{{ env('APP_URL').$image->image }}"
                                             alt="slider-img">
                                     </div>
                                 </div>
-                                @endforeach
+                                @empty
+                                    <div class="thumbnail-image">
+                                        <div class="thumbImg">
+                                            <img src="https://jew.zishstudio.com/wp-content/uploads/2018/02/p1.jpg"
+                                                alt="slider-img">
+                                        </div>
+                                    </div>
+                                @endforelse
                             </div>
                         </div>
                     </div>
@@ -36,6 +48,14 @@
                             <p>
                                 <span class="pro_det_spa">Brand: </span>
                                 <a href="#"> {{ $data->brand->name }}</a>
+                            </p>
+                            <p>
+                                <span class="pro_det_spa">Model Compatible with:
+                                @forelse ($data->models as $model)
+                                    <a href="#">{{ $model->model->name }}</a>
+                                @empty
+                                @endforelse
+                            </span>
                             </p>
                             <p class="py-3">{{ Str::limit($data->description,95) }}</p>
                         </div>
@@ -58,11 +78,11 @@
                         <!-- when stock > 0 -->
                         <div class="add_to_cart_main my-4">
                             <div class="quantity">
-                                <input disabled value=1 type="text" />
-                                <a class="plus">
+                                <input disabled value="{{ $this->quantity }}" type="text" />
+                                <a class="plus" wire:click="increment">
                                     +
                                 </a>
-                                <a class="minus">
+                                <a class="minus" wire:click="decrement">
                                     -
                                 </a>
                             </div>
@@ -129,33 +149,20 @@
             <h2 class="m-4">Desbcription</h2>
             <!-- {/* <h2>Reviews (0)</h2> */} -->
         </div>
-        <!-- <p class="mb-1 fw-bold">{product.name}</p> -->
-        <p class="mb-3 pro__description___">The point of using Lorem Ipsum is that it has a more-or-less normal
-            distribution of letters. On the other hand, we denounce with righteous indignation and dislike men who are
-            so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire</p>
-        <p class="mb-3 pro__description___">It has survived not only five centuries, but also the leap into electronic
+        <p class="mb-1 fw-bold text-center">{{ $data->name }}</p>
+        <p class="mb-3 pro__description___">{{ $data->description }}</p>
+        {{-- <p class="mb-3 pro__description___">It has survived not only five centuries, but also the leap into electronic
             typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
             sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.</p>
-        <div>
-            <!-- <iframe
-            width="100%"
-            height="675"
-            src=""
-            title="Haji Brand"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe> -->
-            <img src="https://jew.zishstudio.com/wp-content/uploads/2017/01/1920x920.jpg" class="w-100"
-                alt="">
-        </div>
+            PageMaker including versions of Lorem Ipsum.</p> --}}
+
     </section>
     <section class=" container sku_and_categories_main mb-3">
         <div>
             <p>
-                <span class="fw-bold">Categories: </span> <span>Cartridge, Knit</span>/
-                <span class="fw-bold">Tags:</span> <span>Coats,Knit,trending</span>
-
+                <span class="fw-bold">Family: </span> <span>{{ $data->family->name }}</span>
+                <span class="fw-bold">Family: </span> <span>{{ $data->family->name }}</span>
+                {{-- <span class="fw-bold">Tags:</span> <span>Coats,Knit,trending</span> --}}
             </p>
         </div>
     </section>

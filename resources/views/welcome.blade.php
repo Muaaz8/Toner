@@ -24,7 +24,7 @@
         <div class="container">
           <div class="row">
             <div class="text-end">
-              <span class="me-4"><a href="">Shipping</a></span>
+              <span class="me-4"><a href="/shipping_and_tracking">Shipping</a></span>
               <!-- <span data-bs-toggle="modal" data-bs-target="#exampleModal">
                 &nbsp; Login / Register
               </span> -->

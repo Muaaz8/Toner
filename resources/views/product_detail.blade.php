@@ -14,7 +14,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+    @livewireStyles()
 </head>
 
 <body>
@@ -27,7 +27,7 @@
         <div class="container">
           <div class="row">
             <div class="text-end">
-              <span class="me-4"><a href="">Shipping</a></span>
+              <span class="me-4"><a href="/shipping_and_tracking">Shipping</a></span>
               <!-- <span data-bs-toggle="modal" data-bs-target="#exampleModal">
                 &nbsp; Login / Register
               </span> -->
@@ -180,9 +180,9 @@
     @livewire('product-details',compact('id'))
 
   </main>
-
+@livewireScripts()
     <!-- =========== RECOMMENDED-PRODUCTS-SECTION STARTS ==============  -->
-    <section class="container">
+    {{-- <section class="container">
       <div class="d-flex justify-content-center mt-5 mb-4">
         <h2>Related Products</h2>
       </div>
@@ -494,7 +494,7 @@
         </div>
         </div>
       </div>
-    </section>
+    </section> --}}
   <!-- =========== RECOMMENDED-PRODUCTS-SECTION ENDS ==============  -->
 
 

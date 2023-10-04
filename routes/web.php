@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Order;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\FamilyController;
@@ -30,6 +31,15 @@ Route::get('/', function () {
 Route::get('/all_product', function () {
     return view('all_products');
 })->name('all_products');
+
+Route::get('/shipping_and_tracking', function () {
+    return view('shipping_and_tracking');
+})->name('shipping_and_tracking');
+
+Route::get('/order_confirmation/{id}', function ($id) {
+    $data = Order::with(['details.products','user'])->find($id);
+    return view('order_confirmation',compact('data'));
+})->name('order_confirmation');
 
 Route::get('/product_detail/{id}', function ($id) {
     return view('product_detail',compact('id'));
