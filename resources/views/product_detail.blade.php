@@ -31,8 +31,20 @@
               <!-- <span data-bs-toggle="modal" data-bs-target="#exampleModal">
                 &nbsp; Login / Register
               </span> -->
-              <span data-bs-toggle="modal" data-bs-target="#exampleModal"><i
-                  class="fa-regular fa-circle-user me-2"></i>Login / Register</span>
+              @if (Auth::check())
+                  <span class="nav-item dropdown me-3"><i class="fa-regular fa-circle-user me-2"></i>{{ Auth::user()->name }}</span>
+                  {{-- <span class="nav-item dropdown me-3"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</span> --}}
+                  <span><a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true">
+                        {{ __('Logout') }}
+                    </i></a></span>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+              @else
+                  <span data-bs-toggle="modal" data-bs-target="#loginModal" style="cursor:pointer;"><i class="fa-regular fa-circle-user me-2"></i>Login / Register</span>
+              @endif
             </div>
           </div>
         </div>
@@ -61,31 +73,16 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Contact</a>
               </li>
-              <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  Dropdown
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="#">Action</a></li>
-                  <li><a class="dropdown-item" href="#">Another action</a></li>
-                  <li>
-                    <hr class="dropdown-divider">
-                  </li>
-                  <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-              </li> -->
-
             </ul>
             <div class="navbar_icons">
               <ul class="d-flex">
                 <li><i class="fa-solid fa-bag-shopping me-3" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRightCart" aria-controls="offcanvasRightCart"></i></li>
-                <li><i class="fa-regular fa-heart me-3" data-bs-toggle="offcanvas"
+                {{-- <li><i class="fa-regular fa-heart me-3" data-bs-toggle="offcanvas"
                     data-bs-target="#offcanvasRightWishlist" aria-controls="offcanvasRightWishlist"></i></li>
                 <li><i class="fa-solid fa-arrows-rotate me-3"></i></li>
                 <li><i class="fa-solid fa-magnifying-glass me-3" data-bs-toggle="offcanvas"
-                    data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"></i></li>
+                    data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"></i></li> --}}
               </ul>
             </div>
             <!-- <button class="btn btn-outline-dark fw-bold" type="submit">Contact Us</button> -->
@@ -178,7 +175,16 @@
       </div>
     </section> --}}
     @livewire('product-details',compact('id'))
-
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightCart" aria-labelledby="offcanvasRightCartLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title m-auto" id="offcanvasRightCartLabel">My Cart</h5>
+            <!-- <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
+            <div class="close_btn" data-bs-dismiss="offcanvas" aria-label="Close">
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+        </div>
+            @livewire('side-cart')
+    </div>
   </main>
 @livewireScripts()
     <!-- =========== RECOMMENDED-PRODUCTS-SECTION STARTS ==============  -->

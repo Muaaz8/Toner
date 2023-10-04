@@ -86,10 +86,10 @@
                                     -
                                 </a>
                             </div>
-                            <button class="add_to_cart me-3">
+                            <button class="add_to_cart me-3" wire:click="add_to_cart({{ $data->id }})">
                                 ADD TO CART
                             </button>
-                            <button class="buy_now">BUY NOW</button>
+                            <button class="buy_now" wire:click="buy_now({{ $data->id }})">BUY NOW</button>
                         </div>
                         <!-- when stock > 0 -->
 

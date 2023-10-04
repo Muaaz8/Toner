@@ -79,12 +79,12 @@
                                 <li><i class="fa-solid fa-bag-shopping me-3" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasRightCart" aria-controls="offcanvasRightCart"></i>
                                 </li>
-                                <li><i class="fa-regular fa-heart me-3" data-bs-toggle="offcanvas"
+                                {{-- <li><i class="fa-regular fa-heart me-3" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasRightWishlist"
                                         aria-controls="offcanvasRightWishlist"></i></li>
                                 <li><i class="fa-solid fa-arrows-rotate me-3"></i></li>
                                 <li><i class="fa-solid fa-magnifying-glass me-3" data-bs-toggle="offcanvas"
-                                        data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"></i></li>
+                                        data-bs-target="#offcanvasTop" aria-controls="offcanvasTop"></i></li> --}}
                             </ul>
                         </div>
                         <!-- <button class="btn btn-outline-dark fw-bold" type="submit">Contact Us</button> -->
