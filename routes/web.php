@@ -107,6 +107,6 @@ Route::get('filter/types/{type_id}', [FilterController::class, 'filterByType'])-
 Route::get('filter/families/{family_id}', [FilterController::class, 'filterByFamily'])->name('filter.families');
 
 
-Route::get('admin/all/orders', [App\Http\Controllers\HomeController::class, 'all_orders'])->name('orders');
-Route::get('admin/order/{id}', [App\Http\Controllers\HomeController::class, 'order_detail'])->name('order_detail_page');
+Route::get('all/orders', [App\Http\Controllers\HomeController::class, 'all_orders'])->name('orders');
+Route::get('order/{id}', [App\Http\Controllers\HomeController::class, 'order_detail'])->name('order_detail_page');
 Route::post('admin/update/order/{id}', [App\Http\Controllers\HomeController::class, 'order_update'])->name('order.update');

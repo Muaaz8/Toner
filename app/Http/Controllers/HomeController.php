@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -33,7 +34,11 @@ class HomeController extends Controller
     }
 
     public function all_orders(){
-        $orders = Order::with(['user'])->get();
+        if(Auth::user()->user_type == "admin"){
+            $orders = Order::with(['user'])->get();
+        }elseif(Auth::user()->user_type == "user"){
+            $orders = Order::with(['user'])->where('user_id',Auth::user()->id)->get();
+        }
         return view('orders.index',compact('orders'));
     }
 

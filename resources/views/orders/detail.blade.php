@@ -63,22 +63,24 @@
                     </div>
                 </div>
             </div>
-            <div class="row mt-3">
-                <div class="card">
-                    <h5 class="card-header"> Status Update</h5>
-                    <div class="row mb-3">
-                        <div>
-                            <form method="post" action="{{ route('order.update',['id'=>$order->id]) }}">
-                                @csrf
-                                <div class="d-flex justify-content-around">
-                                    <input type="text" class="form-control" name="status" value="{{ $order->status }}" style="width: 80%;">
-                                    <button class="btn btn-primary"> Submit</button>
-                                </div>
-                            </form>
+            @if (Auth::user()->user_type == "admin")
+                <div class="row mt-3">
+                    <div class="card">
+                        <h5 class="card-header"> Status Update</h5>
+                        <div class="row mb-3">
+                            <div>
+                                <form method="post" action="{{ route('order.update',['id'=>$order->id]) }}">
+                                    @csrf
+                                    <div class="d-flex justify-content-around">
+                                        <input type="text" class="form-control" name="status" value="{{ $order->status }}" style="width: 80%;">
+                                        <button class="btn btn-primary"> Submit</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
             <div class="content-backdrop fade"></div>
         </div>
     @endsection

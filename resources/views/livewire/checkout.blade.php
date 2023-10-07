@@ -3,13 +3,6 @@
     <section>
         <div class="container mb-5">
             <div class="row">
-                <div class="text-center mt-5" wire:loading>
-                    <div class="spinner-border" role="status">
-                        <span class="sr-only">Loading...</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row" wire:loading.class="invisible">
                 <div class="col-md-7">
                     <div class="container p-2 check_out_left">
                         <div class="billing_shipping_main bg-white p-4">

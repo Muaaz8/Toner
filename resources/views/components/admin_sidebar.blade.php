@@ -2,7 +2,7 @@
 
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
+        <a href="{{ url('/') }}" class="app-brand-link">
             <span class="app-brand-logo demo">
                 <svg width="25" viewBox="0 0 25 42" version="1.1" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -66,83 +66,92 @@
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
-        <li class="menu-item">
-            <a href="{{ route('brands.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Brands</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('types.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Types</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('families.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Families</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('models.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Models</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('products.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Products</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('products.images') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Products Images</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="{{ route('orders') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">All Orders</div>
-            </a>
-        </li>
-        <!-- Layouts -->
-         <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-layout"></i>
-                <div data-i18n="Layouts">Layouts</div>
-            </a>
+        @if (Auth::user()->user_type == "admin")
+            <li class="menu-item">
+                <a href="{{ route('brands.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Brands</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ route('types.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Types</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ route('families.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Families</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ route('models.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Models</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ route('products.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Products</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ route('products.images') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Products Images</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ route('orders') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">All Orders</div>
+                </a>
+            </li>
+            <!-- Layouts -->
+            <li class="menu-item">
+                <a href="javascript:void(0);" class="menu-link menu-toggle">
+                    <i class="menu-icon tf-icons bx bx-layout"></i>
+                    <div data-i18n="Layouts">Layouts</div>
+                </a>
 
-            <ul class="menu-sub">
-                <li class="menu-item">
-                    <a href="layouts-without-menu.html" class="menu-link">
-                        <div data-i18n="Without menu">Without menu</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-without-navbar.html" class="menu-link">
-                        <div data-i18n="Without navbar">Without navbar</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-container.html" class="menu-link">
-                        <div data-i18n="Container">Container</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-fluid.html" class="menu-link">
-                        <div data-i18n="Fluid">Fluid</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-blank.html" class="menu-link">
-                        <div data-i18n="Blank">Blank</div>
-                    </a>
-                </li>
-            </ul>
-        </li>
+                <ul class="menu-sub">
+                    <li class="menu-item">
+                        <a href="layouts-without-menu.html" class="menu-link">
+                            <div data-i18n="Without menu">Without menu</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="layouts-without-navbar.html" class="menu-link">
+                            <div data-i18n="Without navbar">Without navbar</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="layouts-container.html" class="menu-link">
+                            <div data-i18n="Container">Container</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="layouts-fluid.html" class="menu-link">
+                            <div data-i18n="Fluid">Fluid</div>
+                        </a>
+                    </li>
+                    <li class="menu-item">
+                        <a href="layouts-blank.html" class="menu-link">
+                            <div data-i18n="Blank">Blank</div>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        @elseif(Auth::user()->user_type == "user")
+            <li class="menu-item">
+                <a href="{{ route('orders') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">All Orders</div>
+                </a>
+            </li>
+        @endif
 
         {{--<li class="menu-header small text-uppercase">
             <span class="menu-header-text">Pages</span>
