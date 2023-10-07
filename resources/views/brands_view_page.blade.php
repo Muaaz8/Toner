@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>All Products</title>
+  <title>{{ Str::ucfirst($view_brand_details) }}</title>
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
@@ -24,7 +24,7 @@
     <section class="container-fluid products_main_banner">
         <div class="container">
           <div class="banner_content">
-            <h5>Products</h5>
+            <h5>{{ Str::ucfirst($view_brand_details) }}</h5>
             <div>
               <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -335,7 +335,23 @@
           <!-- </div> -->
         </div>
     </section> --}}
-    @livewire('home-product')
+    <section class="py-3" style="
+        height: 300px;
+    ">
+        <div class="container">
+            <div class="row text-center">
+                @foreach ($data as $item)
+                <div class="col-md-6 border border-black rounded-2 p-1"
+                style="width: 48%;
+                        margin-right: 5px;
+                        margin-left: 5px;
+                    ">
+                        {{ $item->name }}
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
     <!-- =========== ALL-PRODUCTS-SECTION ENDS ==============  -->
 
 

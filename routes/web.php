@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\Order;
+use App\Models\Brand;
+use App\Models\Type;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\FamilyController;
@@ -47,6 +49,14 @@ Route::get('/product_detail/{id}', function ($id) {
 
 Route::get('/shopping_cart',ShoppingCart::class)->name('shopping_cart');
 Route::get('/checkout',Checkout::class)->name('checkout');
+
+Route::get('/view_brand_details/{view_brand_details}',function($view_brand_details){
+    if($view_brand_details != null){
+        $brand = Brand::where('name','like','%'.$view_brand_details.'%')->first();
+        $data = Type::where('brand_id',$brand->id)->get();
+    }
+    return view('brands_view_page',compact('view_brand_details','data'));
+})->name('view_brand_details');
 
 Auth::routes();
 

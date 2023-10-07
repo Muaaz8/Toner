@@ -60,8 +60,34 @@
                 </ul>
                 <div class="navbar_icons">
                     <ul class="d-flex">
-                        <li><i class="fa-solid fa-bag-shopping me-3" data-bs-toggle="offcanvas"
-                                data-bs-target="#offcanvasRightCart" aria-controls="offcanvasRightCart"></i></li>
+                        <li>
+                            <div class="position-relative">
+                                <i class="fa-solid fa-bag-shopping me-3" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasRightCart" aria-controls="offcanvasRightCart">
+                                </i>
+                                {{-- @php
+                                use App\Models\Cart;
+                                if(Auth::check()){
+                                    $count = Cart::where('user_id',auth()->user()->id)->where('status','pending')->count();
+                                }else{
+                                    $count = 0;
+                                }
+                                @endphp
+                                <div id="count" style="
+                                    position: absolute;
+                                    top: -8px;
+                                    width: 20px;
+                                    height: 20px;
+                                    background: red;
+                                    border-radius: 50%;
+                                    display: flex;
+                                    justify-content: center;
+                                    color: white;
+                                    right: 32px;
+                                    font-size: 14px;
+                                ">{{ $count }}</div> --}}
+                            </div>
+                        </li>
                         <li><i class="fa-regular fa-heart me-3" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasRightWishlist" aria-controls="offcanvasRightWishlist"></i>
                         </li>
