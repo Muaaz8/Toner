@@ -161,7 +161,7 @@
         <div>
             <p>
                 <span class="fw-bold">Family: </span> <span>{{ $data->family->name }}</span>
-                <span class="fw-bold">Family: </span> <span>{{ $data->family->name }}</span>
+                <span class="fw-bold">Type: </span> <span>{{ $data->type->name }}</span>
                 {{-- <span class="fw-bold">Tags:</span> <span>Coats,Knit,trending</span> --}}
             </p>
         </div>

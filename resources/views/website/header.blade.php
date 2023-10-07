@@ -48,13 +48,13 @@
                         <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Brands</a>
+                        <a class="nav-link" href="{{ route('view_brand_details',['view_brand_details'=>'brands']) }}">Brands</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Special</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="{{ route('contact_us') }}">Contact</a>
                     </li>
 
                 </ul>

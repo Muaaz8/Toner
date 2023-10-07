@@ -340,15 +340,19 @@
     ">
         <div class="container">
             <div class="row text-center">
-                @foreach ($data as $item)
-                <div class="col-md-6 border border-black rounded-2 p-1"
+                @forelse ($data as $item)
+                <div class="col-md-6 border border-black rounded-2 p-1 mt-2"
                 style="width: 48%;
                         margin-right: 5px;
                         margin-left: 5px;
                     ">
                         {{ $item->name }}
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-md-12">
+                        No Data
+                    </div>
+                @endforelse
             </div>
         </div>
     </section>

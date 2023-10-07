@@ -1,9 +1,11 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Order;
 use App\Models\Brand;
 use App\Models\Type;
+use App\Models\ContactUs;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\FamilyController;
@@ -38,6 +40,16 @@ Route::get('/shipping_and_tracking', function () {
     return view('shipping_and_tracking');
 })->name('shipping_and_tracking');
 
+Route::get('/contact_us', function () {
+    return view('contact_us');
+})->name('contact_us');
+
+Route::post('/post_contact_us', function(Request $request){
+    $input = $request->all();
+    ContactUs::create($input);
+    return redirect()->back()->with('success','Request Submitted Successfully.');
+})->name('contact_us.post');
+
 Route::get('/order_confirmation/{id}', function ($id) {
     $data = Order::with(['details.products','user'])->find($id);
     return view('order_confirmation',compact('data'));
@@ -51,9 +63,15 @@ Route::get('/shopping_cart',ShoppingCart::class)->name('shopping_cart');
 Route::get('/checkout',Checkout::class)->name('checkout');
 
 Route::get('/view_brand_details/{view_brand_details}',function($view_brand_details){
-    if($view_brand_details != null){
+    if($view_brand_details != 'brands'){
         $brand = Brand::where('name','like','%'.$view_brand_details.'%')->first();
-        $data = Type::where('brand_id',$brand->id)->get();
+        if($brand){
+            $data = Type::where('brand_id',$brand->id)->get();
+        }else{
+            $data = [];
+        }
+    }else{
+        $data = Brand::all();
     }
     return view('brands_view_page',compact('view_brand_details','data'));
 })->name('view_brand_details');
