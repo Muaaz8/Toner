@@ -44,6 +44,11 @@ Route::get('/contact_us', function () {
     return view('contact_us');
 })->name('contact_us');
 
+Route::get('/contact_us_show', function () {
+    $data = ContactUs::paginate(10);
+    return view('contact_us.contact_us_show',compact('data'));
+})->name('contact_us_show');
+
 Route::post('/post_contact_us', function(Request $request){
     $input = $request->all();
     ContactUs::create($input);
