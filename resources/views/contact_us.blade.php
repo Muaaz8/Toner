@@ -100,6 +100,7 @@
 
     <!-- =========== ALL-PRODUCTS-SECTION ENDS ==============  -->
 
+    @livewire('login-modal')
 
     <!-- =========== RECOMMENDED-PRODUCTS-SECTION STARTS ==============  -->
     <!-- =========== RECOMMENDED-PRODUCTS-SECTION ENDS ==============  -->

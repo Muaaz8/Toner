@@ -93,6 +93,7 @@ class ProductDetails extends Component
                 }
             }
         }
+        $this->emit('side-cart-open');
         $this->emitTo('side-cart', 'refreshComponent');
     }
 

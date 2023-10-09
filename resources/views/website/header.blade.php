@@ -33,7 +33,7 @@
     </header>
     <nav class="d-none d-lg-flex navbar navbar-expand-lg navbar-light ">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">
+            <a class="navbar-brand fw-bold" href="{{ url('/') }}">
                 <img src="https://jew.zishstudio.com/wp-content/themes/elessi-theme/assets/images/logo.jpg"
                     alt="">
             </a>

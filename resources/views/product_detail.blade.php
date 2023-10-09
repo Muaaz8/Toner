@@ -403,6 +403,13 @@ $('.slider-nav').slick({
     ]
 });
     </script>
+    <script>
+        Livewire.on('side-cart-open', postId => {
+            var myOffcanvas = document.getElementById('offcanvasRightCart');
+            var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas);
+            bsOffcanvas.show();
+        });
+    </script>
         <script>
           $('.autoplay').slick({
     slidesToShow: 4,

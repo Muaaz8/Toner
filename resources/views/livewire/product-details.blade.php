@@ -146,7 +146,7 @@
 
     <section class="container my-5">
         <div class="d-flex justify-content-center">
-            <h2 class="m-4">Desbcription</h2>
+            <h2 class="m-4">Description</h2>
             <!-- {/* <h2>Reviews (0)</h2> */} -->
         </div>
         <p class="mb-1 fw-bold text-center">{{ $data->name }}</p>
@@ -161,6 +161,7 @@
         <div>
             <p>
                 <span class="fw-bold">Family: </span> <span>{{ $data->family->name }}</span>
+                <br>
                 <span class="fw-bold">Type: </span> <span>{{ $data->type->name }}</span>
                 {{-- <span class="fw-bold">Tags:</span> <span>Coats,Knit,trending</span> --}}
             </p>
