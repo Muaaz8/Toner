@@ -62,28 +62,15 @@
                     <ul class="d-flex">
                         <li>
                             <div class="position-relative">
-                                {{-- <div> --}}
                                     <i class="fa-solid fa-bag-shopping me-3" data-bs-toggle="offcanvas"
                                         data-bs-target="#offcanvasRightCart" aria-controls="offcanvasRightCart">
                                     </i>
-                                    {{-- <div style="    position: absolute;
-                                    top: -10px;
-                                    right: 28px;
-                                    background: #022b49;
-                                    border-radius: 50%;
-                                    text-align: center;
-                                    color: white;
-                                    height: 25px;
-                                    width: 25px;">
-                                        {{ $count }}
-                                    </div>
-                                </div> --}}
                                 @php
                                 use App\Models\Cart;
                                 if(Auth::check()){
                                     $count = Cart::where('user_id',auth()->user()->id)->where('status','pending')->count();
                                 }else{
-                                    $count = 0;
+                                    $count = count(json_decode(Cookie::get('shopping_cart')));
                                 }
                                 @endphp
                                 <div id="count" style="

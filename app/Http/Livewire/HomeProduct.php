@@ -11,6 +11,7 @@ use App\Models\Product;
 use App\Models\Type;
 use Auth;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 
 class HomeProduct extends Component
@@ -72,7 +73,7 @@ class HomeProduct extends Component
                     'status' => 'pending',
                 ]);
             }
-            $this->emitTo('side-cart', 'refreshComponent');
+            $data = Cart::where('user_id', Auth::user()->id)->where('status', 'pending')->count();
         } else {
             $prod_id = $val;
             $quantity = 1;
@@ -114,8 +115,9 @@ class HomeProduct extends Component
                     Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));
                 }
             }
+            $data = count($cart_data);
         }
-        $this->emit('side-cart-open');
+        $this->emit('side-cart-open',$data);
         $this->emitTo('side-cart', 'refreshComponent');
     }
 }

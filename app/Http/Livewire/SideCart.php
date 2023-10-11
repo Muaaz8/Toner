@@ -83,6 +83,7 @@ class SideCart extends Component
         if(Auth::check()){
             $check = Cart::findOrFail($id);
             $check->delete();
+            $data = Cart::where('user_id', Auth::user()->id)->where('status', 'pending')->count();
         }else{
             $cookie_data = stripslashes(Cookie::get('shopping_cart'));
             $cart_data = json_decode($cookie_data);
@@ -92,6 +93,10 @@ class SideCart extends Component
             $minutes = 60;
             Cookie::queue(Cookie::make('shopping_cart', $item_data, $minutes));
             $this->emit('refreshComponent');
+            $cookie_data = json_decode(stripslashes(Cookie::get('shopping_cart')));
+            $data = count($cart_data);
         }
+        $this->emit('side-cart-open', $data);
+
     }
 }

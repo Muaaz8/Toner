@@ -66,7 +66,7 @@
                         <!-- <span class="new_badge">10%</span> -->
                         </div>
                             <a href="{{ route('product_detail',['id'=>$item->id]) }}">
-                            <div class="img-holder">
+                            <div class="img-holder" style="height: 27em;">
                                 @if(count($item->images)>0)
                                     <img src="{{ $item->images[0]?env('APP_URL').$item->images[0]->image:'' }}"
                                     class="item-img-1"

@@ -668,6 +668,7 @@
         </div>
             @livewire('side-cart')
     </div>
+    @livewire('login-modal')
 
 
 
@@ -715,6 +716,27 @@
 }
 
 );
+    </script>
+    <script type="text/javascript">
+        var modalForm = new bootstrap.Modal(document.getElementById('loginModal'), {
+            keyboard: false
+        })
+
+        window.addEventListener('closeModal', event => {
+            modalForm.hide()
+        });
+
+        window.addEventListener('openModal', event => {
+            modalForm.show()
+        });
+        Livewire.on('side-cart-open', data => {
+            var myOffcanvas = document.getElementById('offcanvasRightCart');
+            var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas);
+            if (!bsOffcanvas._element.classList.contains('show')) {
+                bsOffcanvas.show();
+            }
+            var count = document.getElementById('count').innerHTML = data;
+        });
     </script>
 </body>
 

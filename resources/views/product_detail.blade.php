@@ -404,10 +404,11 @@ $('.slider-nav').slick({
 });
     </script>
     <script>
-        Livewire.on('side-cart-open', postId => {
+        Livewire.on('side-cart-open', data => {
             var myOffcanvas = document.getElementById('offcanvasRightCart');
             var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas);
             bsOffcanvas.show();
+            var count = document.getElementById('count').innerHTML = data;
         });
     </script>
         <script>

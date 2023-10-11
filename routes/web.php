@@ -30,7 +30,7 @@ use App\Http\Livewire\Checkout;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/all_product', function () {
     return view('all_products');

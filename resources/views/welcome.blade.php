@@ -460,21 +460,21 @@
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
     </script>
     <script>
-        const formSection = document.querySelector('.form-section');
-        const createAccountLink = document.querySelector('.create-account-link');
-        const signInLink = document.querySelector('.sign-in-link');
+        // const formSection = document.querySelector('.form-section');
+        // const createAccountLink = document.querySelector('.create-account-link');
+        // const signInLink = document.querySelector('.sign-in-link');
 
-        createAccountLink.addEventListener('click', () => {
-            formSection.classList.add('form-section-move');
-            createAccountLink.classList.remove('active-link');
-            signInLink.classList.add('active-link');
-        });
+        // createAccountLink.addEventListener('click', () => {
+        //     formSection.classList.add('form-section-move');
+        //     createAccountLink.classList.remove('active-link');
+        //     signInLink.classList.add('active-link');
+        // });
 
-        signInLink.addEventListener('click', () => {
-            formSection.classList.remove('form-section-move');
-            createAccountLink.classList.add('active-link');
-            signInLink.classList.remove('active-link');
-        });
+        // signInLink.addEventListener('click', () => {
+        //     formSection.classList.remove('form-section-move');
+        //     createAccountLink.classList.add('active-link');
+        //     signInLink.classList.remove('active-link');
+        // });
     </script>
     <script type="text/javascript">
         var modalForm = new bootstrap.Modal(document.getElementById('loginModal'), {
@@ -488,10 +488,13 @@
         window.addEventListener('openModal', event => {
             modalForm.show()
         });
-        Livewire.on('side-cart-open', postId => {
+        Livewire.on('side-cart-open', data => {
             var myOffcanvas = document.getElementById('offcanvasRightCart');
             var bsOffcanvas = new bootstrap.Offcanvas(myOffcanvas);
-            bsOffcanvas.show();
+            if (!bsOffcanvas._element.classList.contains('show')) {
+                bsOffcanvas.show();
+            }
+            var count = document.getElementById('count').innerHTML = data;
         });
     </script>
 </body>
