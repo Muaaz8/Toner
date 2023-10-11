@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="text-end">
-                    <span class="me-4"><a href="">Shipping</a></span>
+                    <span class="me-4"><a href="{{ route('shipping_and_tracking') }}">Shipping</a></span>
                     {{-- <span data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-circle-user me-2"></i>Login / Register</span> --}}
                     @if (Auth::check())
                         <span class="me-4 border p-2 wish_add_cart_btn ">
@@ -62,10 +62,23 @@
                     <ul class="d-flex">
                         <li>
                             <div class="position-relative">
-                                <i class="fa-solid fa-bag-shopping me-3" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasRightCart" aria-controls="offcanvasRightCart">
-                                </i>
-                                {{-- @php
+                                {{-- <div> --}}
+                                    <i class="fa-solid fa-bag-shopping me-3" data-bs-toggle="offcanvas"
+                                        data-bs-target="#offcanvasRightCart" aria-controls="offcanvasRightCart">
+                                    </i>
+                                    {{-- <div style="    position: absolute;
+                                    top: -10px;
+                                    right: 28px;
+                                    background: #022b49;
+                                    border-radius: 50%;
+                                    text-align: center;
+                                    color: white;
+                                    height: 25px;
+                                    width: 25px;">
+                                        {{ $count }}
+                                    </div>
+                                </div> --}}
+                                @php
                                 use App\Models\Cart;
                                 if(Auth::check()){
                                     $count = Cart::where('user_id',auth()->user()->id)->where('status','pending')->count();
@@ -75,17 +88,15 @@
                                 @endphp
                                 <div id="count" style="
                                     position: absolute;
-                                    top: -8px;
-                                    width: 20px;
-                                    height: 20px;
-                                    background: red;
+                                    top: -10px;
+                                    right: 28px;
+                                    background: #022b49;
                                     border-radius: 50%;
-                                    display: flex;
-                                    justify-content: center;
+                                    text-align: center;
                                     color: white;
-                                    right: 32px;
-                                    font-size: 14px;
-                                ">{{ $count }}</div> --}}
+                                    height: 25px;
+                                    width: 25px;
+                                ">{{ $count }}</div>
                             </div>
                         </li>
                         <li><i class="fa-regular fa-heart me-3" data-bs-toggle="offcanvas"

@@ -40,6 +40,11 @@ Route::get('/shipping_and_tracking', function () {
     return view('shipping_and_tracking');
 })->name('shipping_and_tracking');
 
+Route::post('order_status', function (Request $request) {
+    $order = Order::findOrFail($request->order_no);
+    return redirect()->back()->with('success','The Current Status of your Order: '.$order->status.'.');
+})->name('order_status');
+
 Route::get('/contact_us', function () {
     return view('contact_us');
 })->name('contact_us');

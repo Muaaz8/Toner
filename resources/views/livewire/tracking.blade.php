@@ -23,16 +23,24 @@
 
         <p>STEP 3: SCROLL TO THE BOTTOM OF THE PAGE FOR YOUR TRACKING NUMBER</p>
     </div>
+    <div class="d-flex justify-content-center">
+        @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
+    </div>
     <div class="d-flex justify-content-center p-4">
-        <form action="#" style="width:50%">
+        <form action="{{ route('order_status') }}" method="POST" style="width:50%">
+            @csrf
                 <label for="email"><strong>Email Address*</strong></label>
-                <input type="text" class="form-control mb-3">
+                <input type="text" name="email" class="form-control mb-3">
 
-                <label for="email"><strong>Order Number*</strong></label>
-                <input type="text" class="form-control mb-3">
+                <label for="order_no"><strong>Order Number*</strong></label>
+                <input type="text" name="order_no" class="form-control mb-3">
 
                 <label for="email"><strong>Addtional Information</strong></label>
-                <textarea class="form-control mb-3" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control mb-3" name="info" id="exampleFormControlTextarea1" rows="3"></textarea>
 
                 <p class="text-center"><strong>* Indicates required field.</strong></p>
 
