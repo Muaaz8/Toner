@@ -61,21 +61,16 @@
                         </div>
 
 
-                        {{-- <div>
+                        <div>
                             <p class="mb-1">
-                                Only <span style="color: #1e73be; font-weight: 600;">2</span> item(s) left in stock.
+                                Only <span style="color: #1e73be; font-weight: 600;">{{ $data->stocks }}</span> item(s) left in stock.
                             </p>
                             <div class="progress" role="progressbar" aria-label="Example 1px high" aria-valuenow="25"
                                 aria-valuemin="0" aria-valuemax="100" style="height: 5px">
-                                <div class="progress-bar" style="width: 20%"></div>
+                                <div class="progress-bar" style="width: {{ $data->stocks }}%"></div>
                             </div>
-                        </div> --}}
+                        </div>
 
-                        <!-- when stock 0 -->
-                        <!-- <p style="color: #f76b6a;">Out of stock</p> -->
-                        <!-- when stock 0 -->
-
-                        <!-- when stock > 0 -->
                         <div class="add_to_cart_main my-4">
                             <div class="quantity">
                                 <input disabled value="{{ $this->quantity }}" type="text" />
