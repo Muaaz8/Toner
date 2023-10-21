@@ -71,7 +71,16 @@
                                     <label class="col-sm-2 col-form-label" for="basic-default-name">Product Price</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="basic-default-name" name="price"
-                                            placeholder="54.99" required/>
+                                            placeholder="54.99" required
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');"/>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label" for="basic-default-name">Product Stocks</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="basic-default-name" name="stocks"
+                                            placeholder="15" required
+                                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');"/>
                                     </div>
                                 </div>
                                 <div class="row mb-3">

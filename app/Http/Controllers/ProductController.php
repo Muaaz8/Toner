@@ -50,6 +50,7 @@ class ProductController extends Controller
             'type_id' => 'integer',
             'price' => 'numeric|required',
             'description' => 'required',
+            'stocks' => 'required',
         ]);
         $product = Product::create([
             'name' => $request->input('name'),
@@ -58,6 +59,7 @@ class ProductController extends Controller
             'type_id' => $request->input('type_id'),
             'price' => $request->input('price'),
             'description' => $request->input('description'),
+            'stocks' => $request->input('stocks'),
         ]);
         foreach ($request->model_id as $key => $value) {
             ModelProduct::create([
@@ -129,6 +131,7 @@ class ProductController extends Controller
             'type_id' => 'integer',
             'price' => 'numeric|required',
             'description' => 'required',
+            'stocks' => 'required',
         ]);
 
         $product->update([
@@ -138,6 +141,7 @@ class ProductController extends Controller
             'type_id' => $request->input('type_id'),
             'price' => $request->input('price'),
             'description' => $request->input('description'),
+            'stocks' => $request->input('stocks'),
         ]);
         foreach ($request->model_id as $key => $value) {
             $check = ModelProduct::where('model_id',$value)->where('product_id',$id)->first();
@@ -148,7 +152,7 @@ class ProductController extends Controller
                 ]);
             }
         }
-        if($request->image[0] != null){
+        if(isset($request->image)){
             foreach ($request->image as $key => $value) {
                 $extension = $value->getClientOriginalExtension();
                 $filename = time().rand(1,50).'.' . $extension;

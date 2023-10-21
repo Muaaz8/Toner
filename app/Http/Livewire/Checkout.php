@@ -106,6 +106,9 @@ class Checkout extends Component
                         'product_price' => $value->price,
                         'quantity' => $value->quantity,
                     ]);
+                    $product = Product::find($value->product_id);
+                    $product->stocks--;
+                    $product->save();
                     $item = Cart::find($value->id);
                     $item->status = "order-placed";
                     $item->save();
@@ -120,8 +123,11 @@ class Checkout extends Component
                         'product_price' => $value->price,
                         'quantity' => $value->quantity,
                     ]);
+                    $product = Product::find($value->product_id);
+                    $product->stocks--;
+                    $product->save();
                 }
-                Cookie::queue(Cookie::forget('cookieName'));
+                Cookie::queue(Cookie::forget('shopping_cart'));
             }
             return redirect()->to('/order_confirmation/'.$order->id);
 

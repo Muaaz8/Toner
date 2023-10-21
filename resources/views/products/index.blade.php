@@ -23,6 +23,7 @@
                                     <th>Family</th>
                                     <th>Type</th>
                                     <th>Brand</th>
+                                    <th>Stocks</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -34,6 +35,7 @@
                                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $product->family?$product->family->name:"-" }}</strong></td>
                                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $product->type?$product->type->name:"-" }}</strong></td>
                                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $product->brand->name }}</strong></td>
+                                        <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $product->stocks }}</strong></td>
                                         <td>
                                             <div class="dropdown">
                                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"

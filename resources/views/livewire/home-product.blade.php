@@ -60,8 +60,12 @@
                         <!-- "fa-solid fa-heart heart_active  wish_list_heart" -->
                         {{-- <i class= "fa-regular fa-heart wish_list_heart"></i> --}}
                         <div class="badges-wrap">
-                        <!-- <span class="new_badge out_stock_badge">SOLD OUT</span> -->
-                        <!-- <span class="new_badge">NEW</span> -->
+                            @if ($item->stocks == 0)
+                                <span class="new_badge out_stock_badge">SOLD OUT</span>
+                            @endif
+                            @if ($item->created_at > \Carbon\Carbon::now()->subDays(5))
+                                <span class="new_badge">NEW</span>
+                            @endif
                         <span class="new_badge">FEATURED</span>
                         <!-- <span class="new_badge">10%</span> -->
                         </div>
@@ -77,7 +81,6 @@
                                     class="item-img-2"
                                     alt="product-image2"
                                     />
-                                    {{--  --}}
                                 @else
                                     <img src="https://jew.zishstudio.com/wp-content/uploads/2018/02/p1.jpg" class="item-img-1"
                                         alt="product-image" />
@@ -105,10 +108,18 @@
                             </div>
                             </div>
                             <div class="cart__">
-                            <a class="a_main__" wire:click="add_to_cart({{ $item->id }})">
-                            <span class="add_to_cart_span">ADD TO CART</span>
-                                <i class="fa-solid fa-bag-shopping shop__bag__pro"></i>
-                            </a>
+                                @if ($item->stocks != 0)
+                                    <a class="a_main__" wire:click="add_to_cart({{ $item->id }})">
+                                    <span class="add_to_cart_span">ADD TO CART</span>
+                                        <i class="fa-solid fa-bag-shopping shop__bag__pro"></i>
+                                    </a>
+                                @else
+                                    <a class="a_main__">
+                                    <span class="add_to_cart_span">Out Of Stock</span>
+                                        <i class="fa-solid fa-bag-shopping shop__bag__pro"></i>
+                                    </a>
+
+                                @endif
                         </div>
                     </figure>
                 </div>
