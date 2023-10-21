@@ -77,53 +77,56 @@ class Checkout extends Component
 
     public function submitForm(){
         $this->validate();
+        if (!($this->total < 99 && $this->shipping_amount == 0)) {
+            $order = Order::create([
+                'user_id' => Auth::check()?Auth::user()->id:null,
+                'first_name' => $this->first_name,
+                'last_name' => $this->last_name,
+                'company_name' => $this->company_name,
+                'country' => $this->country,
+                'address' => $this->address,
+                'appartment' => $this->appartment,
+                'city' => $this->city,
+                'state' => $this->state,
+                'zip_code' => $this->zip_code,
+                'phone' => $this->phone,
+                'email' => $this->email,
+                'notes' => $this->notes,
+                'status' => 'order-placed',
+                'price' => $this->total,
+                'shipping_amount' => $this->shipping_amount,
+                'grand_total' => $this->grand_total,
+            ]);
 
-        $order = Order::create([
-            'user_id' => Auth::check()?Auth::user()->id:null,
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-            'company_name' => $this->company_name,
-            'country' => $this->country,
-            'address' => $this->address,
-            'appartment' => $this->appartment,
-            'city' => $this->city,
-            'state' => $this->state,
-            'zip_code' => $this->zip_code,
-            'phone' => $this->phone,
-            'email' => $this->email,
-            'notes' => $this->notes,
-            'status' => 'order-placed',
-            'price' => $this->total,
-            'shipping_amount' => $this->shipping_amount,
-            'grand_total' => $this->grand_total,
-        ]);
-
-        if(Auth::check()){
-            foreach ($this->cart_items as $key => $value) {
-                OrderDetails::create([
-                    'order_id' => $order->id,
-                    'product_id'=> $value->product_id,
-                    'product_price' => $value->price,
-                    'quantity' => $value->quantity,
-                ]);
-                $item = Cart::find($value->id);
-                $item->status = "order-placed";
-                $item->save();
+            if(Auth::check()){
+                foreach ($this->cart_items as $key => $value) {
+                    OrderDetails::create([
+                        'order_id' => $order->id,
+                        'product_id'=> $value->product_id,
+                        'product_price' => $value->price,
+                        'quantity' => $value->quantity,
+                    ]);
+                    $item = Cart::find($value->id);
+                    $item->status = "order-placed";
+                    $item->save();
+                }
+            }else{
+                $cookie_data = stripslashes(Cookie::get('shopping_cart'));
+                $data = json_decode($cookie_data);
+                foreach ($data as $key => $value) {
+                    OrderDetails::create([
+                        'order_id' => $order->id,
+                        'product_id'=> $value->product_id,
+                        'product_price' => $value->price,
+                        'quantity' => $value->quantity,
+                    ]);
+                }
+                Cookie::queue(Cookie::forget('cookieName'));
             }
+            return redirect()->to('/order_confirmation/'.$order->id);
+
         }else{
-            $cookie_data = stripslashes(Cookie::get('shopping_cart'));
-            $data = json_decode($cookie_data);
-            foreach ($data as $key => $value) {
-                OrderDetails::create([
-                    'order_id' => $order->id,
-                    'product_id'=> $value->product_id,
-                    'product_price' => $value->price,
-                    'quantity' => $value->quantity,
-                ]);
-            }
-            Cookie::queue(Cookie::forget('cookieName'));
+            $this->addError('shipping_method','Must Select a Shipping Type');
         }
-
-        return redirect()->to('/order_confirmation/'.$order->id);
     }
 }

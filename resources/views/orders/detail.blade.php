@@ -53,8 +53,18 @@
                                             </tr>
                                         @endforeach
                                         <tr>
-                                            <td colspan="3" class="text-center"><strong>Total Amount</strong></td>
+                                            <td colspan="3" class="text-center"><strong>Sub Total</strong></td>
                                             <td colspan="1"><strong>$ {{ $order->price }}</strong></td>
+                                        </tr>
+                                        @if ($order->shipping_amount != 0)
+                                            <tr>
+                                                <td colspan="3" class="text-center"><strong>Shipping Amount</strong></td>
+                                                <td colspan="1"><strong>$ {{ $order->shipping_amount }}</strong></td>
+                                            </tr>
+                                        @endif
+                                        <tr>
+                                            <td colspan="3" class="text-center"><strong>Grand Total</strong></td>
+                                            <td colspan="1"><strong>$ {{ $order->grand_total }}</strong></td>
                                         </tr>
                                     </tbody>
                                 </table>

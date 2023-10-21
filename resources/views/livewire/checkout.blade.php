@@ -130,6 +130,11 @@
                                 </div>
                             @endforeach
                             <div class="cart_subtotal_main">
+                                @error('shipping_method')
+                                    <div class="mt-3 text-center">
+                                        <small class="text-danger" style="display: block;text-align: center;"> {{ $message }} </small>
+                                    </div>
+                                @enderror
                                 <table class="table cart_subtotal">
                                     <tr class="d-flex flex-column">
                                         <th>Shipping</th>

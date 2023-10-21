@@ -106,7 +106,11 @@
                                                 <p class="order_detail_sec_th">
 
                                                     <span class="via_del_fs">
-                                                        Free shipping
+                                                        @if ($data->shipping_amount == 0)
+                                                            Free Shipping   
+                                                        @else
+                                                            $ {{ $data->shipping_amount }}
+                                                        @endif
                                                     </span>
                                                 </p>
                                             </th>
@@ -130,7 +134,7 @@
                                             </th>
                                             <th class="td_border_n">
                                                 <p class="order_detail_sec_th tot_Order_head total_am_color">
-                                                    $ {{ $data->price }}
+                                                    $ {{ $data->grand_total }}
                                                 </p>
                                             </th>
                                         </tr>
