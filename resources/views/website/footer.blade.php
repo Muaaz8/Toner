@@ -63,11 +63,11 @@
                         </div>
                         <div class="col-md-8 col-sm-6">
                             <ul class="terms-privacy d-flex justify-content-sm-end justify-content-center flex-wrap">
-                                <li><a href="#">Privacy & Cookies</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
-                                <li><a href="#">Accessibility</a></li>
+                                <li><a href="{{ route('privacy_policy') }}">Privacy Policy</a></li>
+                                <li><a href="{{ route('terms_and_conditions') }}">Terms & Conditions</a></li>
+                                {{-- <li><a href="#">Accessibility</a></li>
                                 <li><a href="#">Store Directory</a></li>
-                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">About Us</a></li> --}}
                             </ul>
                         </div>
                     </div>
