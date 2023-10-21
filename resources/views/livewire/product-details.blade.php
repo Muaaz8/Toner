@@ -42,7 +42,7 @@
                     <div>
                         <h2 class="mt-4">{{ $data->name }}</h2>
                         <h3 class="mt-3">
-                            $ 100.00
+                            $ {{ $data->price }}
                         </h3>
                         <div class="product__details_cont pt-3">
                             <p>

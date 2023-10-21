@@ -13,6 +13,7 @@ use Auth;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 use Livewire\Component;
+use Request;
 
 class HomeProduct extends Component
 {
@@ -48,10 +49,14 @@ class HomeProduct extends Component
                 $products = $filtered['products'];
             }
         } else {
-            $types = Type::all();
-            $families = Family::all();
-            $models = PrinterModel::all();
-            $products = Product::with('images')->limit(4)->get();
+            $types = [];
+            $families = [];
+            $models = [];
+            if(Request::path() != "all_product"){
+                $products = Product::with('images')->limit(4)->get();
+            }else{
+                $products = Product::with('images')->get();
+            }
         }
         return view('livewire.home-product', compact('brands', 'types', 'families', 'models', 'products'));
     }

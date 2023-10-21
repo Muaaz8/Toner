@@ -10,23 +10,23 @@
                                     <img src="https://jew.zishstudio.com/wp-content/uploads/2017/11/logo.png"
                                         alt="logo">
                                 </a>
-                                <p>Calista Wise 7292 Dictum Av. Antonio, Italy.</p>
-                                <p>(+01)-800-3456-88</p>
+                                <p>57 hillhurst cres.</p>
                                 <ul class="company-footer-contact-list">
-                                    <li></i>admin@mail.com</li>
-                                    <li></i>yourdomain.com</li>
+                                    <li></i>Courtice</li>
+                                    <li></i>Ontario</li>
+                                    <li></i>L1E2A4</li>
                                 </ul>
+                                <p>(+01)-800-3456-88</p>
                             </div>
                         </div><!-- widget end -->
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="widget course-links-widget">
                                 <h5 class="widget-title">Information</h5>
                                 <ul class="courses-link-list">
-                                    <li><a href="#">Delivery Information</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Terms & Condition</a></li>
-                                    <li><a href="#">Search Terms</a></li>
-                                    <li><a href="#">Order & Return</a></li>
+                                    <li><a href="{{ route('delivery_information') }}">Delivery Information</a></li>
+                                    <li><a href="{{ route('privacy_policy') }}">Privacy Policy</a></li>
+                                    <li><a href="{{ route('terms_and_conditions') }}">Terms & Condition</a></li>
+                                    <li><a href="{{ route('order_and_returns') }}">Order & Return</a></li>
                                 </ul>
                             </div>
                         </div><!-- widget end -->
@@ -34,11 +34,8 @@
                             <div class="widget latest-news-widget">
                                 <h5 class="widget-title">Need help</h5>
                                 <ul class="courses-link-list">
-                                    <li><a href="#">Customer Service</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Terms & Condition</a></li>
-                                    <li><a href="#">Best Seller</a></li>
-                                    <li><a href="#">Manufactures</a></li>
+                                    <li><a href="{{ route('customer_service') }}">Customer Service</a></li>
+                                    <li><a href="{{ route('manufactures') }}">Manufactures</a></li>
                                 </ul>
                             </div>
                         </div><!-- widget end -->

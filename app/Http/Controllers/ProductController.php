@@ -113,7 +113,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function post_update(Request $request, $id)
     {
         $product = Product::findOrFail($id);
         $request->validate([
@@ -148,7 +148,17 @@ class ProductController extends Controller
                 ]);
             }
         }
-
+        if($request->image[0] != null){
+            foreach ($request->image as $key => $value) {
+                $extension = $value->getClientOriginalExtension();
+                $filename = time().rand(1,50).'.' . $extension;
+                $value->move(public_path('uploads/'), $filename);
+                ImagesProduct::create([
+                    'product_id'=>$product->id,
+                    'image'=>'uploads/'.$filename,
+                ]);
+            }
+        }
         return redirect()->route('products.index')->with('success', 'Product updated successfully');
     }
 

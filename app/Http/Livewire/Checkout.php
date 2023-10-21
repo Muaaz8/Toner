@@ -29,6 +29,8 @@ class Checkout extends Component
     public $phone;
     public $email;
     public $notes;
+    public $shipping_amount;
+    public $grand_total;
 
     protected $rules = [
         'first_name' => 'required',
@@ -69,6 +71,7 @@ class Checkout extends Component
         if(Auth::check()){
             $this->cart_items = $data;
         }
+        $this->grand_total = $this->total+$this->shipping_amount;
         return view('livewire.checkout',compact('data'))->layout('shopping_cart');
     }
 
@@ -91,6 +94,8 @@ class Checkout extends Component
             'notes' => $this->notes,
             'status' => 'order-placed',
             'price' => $this->total,
+            'shipping_amount' => $this->shipping_amount,
+            'grand_total' => $this->grand_total,
         ]);
 
         if(Auth::check()){

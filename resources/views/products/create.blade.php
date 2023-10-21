@@ -20,13 +20,13 @@
                                     <label class="col-sm-2 col-form-label" for="basic-default-name">Product Name</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="basic-default-name" name="name"
-                                            placeholder="Dell" />
+                                            placeholder="Dell" required/>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="basic-default-name">Family</label>
                                     <div class="col-sm-10">
-                                        <select id="country" class="select2 form-select" name="family_id">
+                                        <select id="country" class="select2 form-select" name="family_id" required>
                                             <option value="">Select</option>
                                             @foreach ($families as $family)
                                                 <option value="{{ $family->id }}">{{ $family->name }}</option>
@@ -37,7 +37,7 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="basic-default-name">Type</label>
                                     <div class="col-sm-10">
-                                        <select id="country" class="select2 form-select" name="type_id">
+                                        <select id="country" class="select2 form-select" name="type_id" required>
                                             <option value="">Select</option>
                                             @foreach ($types as $type)
                                                 <option value="{{ $type->id }}">{{ $type->name }}</option>
@@ -48,7 +48,7 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="basic-default-name">Brands</label>
                                     <div class="col-sm-10">
-                                        <select id="country" class="select2 form-select" name="brand_id">
+                                        <select id="country" class="select2 form-select" name="brand_id" required>
                                             <option value="">Select</option>
                                             @foreach ($brands as $brand)
                                                 <option value="{{ $brand->id }}">{{ $brand->name }}</option>
@@ -59,7 +59,7 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="basic-default-name">Models</label>
                                     <div class="col-sm-10">
-                                        <select id="country" class="js-example-basic-multiple form-select" name="model_id[]" multiple>
+                                        <select id="country" class="js-example-basic-multiple form-select" name="model_id[]" multiple required>
                                             <option value="">Select</option>
                                             @foreach ($models as $model)
                                                 <option value="{{ $model->id }}">{{ $model->name }}</option>
@@ -71,7 +71,7 @@
                                     <label class="col-sm-2 col-form-label" for="basic-default-name">Product Price</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="basic-default-name" name="price"
-                                            placeholder="54.99" />
+                                            placeholder="54.99" required/>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -79,13 +79,13 @@
                                     <div class="col-sm-10">
                                         {{-- <input type="text" class="form-control" id="basic-default-name" name="name"
                                             placeholder="Dell" /> --}}
-                                            <textarea name="description" cols="30" rows="5" class="form-control" ></textarea>
+                                            <textarea name="description" cols="30" rows="5" class="form-control" required></textarea>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label" for="basic-default-name">Images</label>
                                     <div class="col-sm-10">
-                                        <input class="form-control" type="file" id="formFileMultiple" name="image[]" multiple>
+                                        <input class="form-control" type="file" id="formFileMultiple" name="image[]" multiple required>
                                     </div>
                                 </div>
                                 <div class="row justify-content-end">

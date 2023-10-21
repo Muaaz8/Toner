@@ -32,6 +32,7 @@
         </div>
             @livewire('side-cart')
     </div>
+    @include('website.footer')
   </main>
 @livewireScripts()
     <!-- =========== RECOMMENDED-PRODUCTS-SECTION STARTS ==============  -->

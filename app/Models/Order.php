@@ -24,6 +24,8 @@ class Order extends Model
         'user_id',
         'price',
         'status',
+        'shipping_amount',
+        'grand_total',
     ];
 
     public function details(){

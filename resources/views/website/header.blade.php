@@ -70,7 +70,11 @@
                                 if(Auth::check()){
                                     $count = Cart::where('user_id',auth()->user()->id)->where('status','pending')->count();
                                 }else{
-                                    $count = count(json_decode(Cookie::get('shopping_cart')));
+                                    if(Cookie::get('shopping_cart')){
+                                        $count = count(json_decode(Cookie::get('shopping_cart')));
+                                    }else{
+                                        $count = 0;
+                                    }
                                 }
                                 @endphp
                                 <div id="count" style="

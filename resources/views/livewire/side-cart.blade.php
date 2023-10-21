@@ -19,7 +19,7 @@
                                 <div class="cart_data__ mb-3 d-flex justify-content-around">
                                     {{-- <img src="https://jew.zishstudio.com/wp-content/uploads/2023/08/p3.jpg" /> --}}
                                     <img
-                                        src="{{ $dt->products->images != '[]' ? $dt->products->images[0]->image : 'https://jew.zishstudio.com/wp-content/uploads/2023/08/p3.jpg' }}" />
+                                        src="{{ $dt->products->images != '[]' ? "/".$dt->products->images[0]->image : 'https://jew.zishstudio.com/wp-content/uploads/2023/08/p3.jpg' }}" />
                                     <span class="shop_del_item shop__del_two" wire:click="remove({{ $dt->id }})">
                                         <i class="fa-solid fa-xmark"></i>
                                     </span>
@@ -63,7 +63,7 @@
                                 <div class="cart_data__ mb-3 d-flex justify-content-around">
                                     {{-- <img src="https://jew.zishstudio.com/wp-content/uploads/2023/08/p3.jpg" /> --}}
                                     <img
-                                        src="{{ $dt->products->images != '[]' ? $dt->products->images[0]->image : 'https://jew.zishstudio.com/wp-content/uploads/2023/08/p3.jpg' }}" />
+                                        src="{{ $dt->products->images != '[]' ? "/".$dt->products->images[0]->image : 'https://jew.zishstudio.com/wp-content/uploads/2023/08/p3.jpg' }}" />
                                     <span class="shop_del_item shop__del_two" wire:click="remove({{ $key }})">
                                         <i class="fa-solid fa-xmark"></i>
                                     </span>

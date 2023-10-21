@@ -113,7 +113,7 @@
                     </figure>
                 </div>
             @endforeach
-            @if(Request::path() == '/')
+            @if(Request::path() != 'all_product')
                 <div class="text-center">
                     <a href="{{ route('all_products') }}"><button class="btn btn-primary"> View All</button></a>
                 </div>

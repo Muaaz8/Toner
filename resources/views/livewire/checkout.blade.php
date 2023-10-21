@@ -131,6 +131,29 @@
                             @endforeach
                             <div class="cart_subtotal_main">
                                 <table class="table cart_subtotal">
+                                    <tr class="d-flex flex-column">
+                                        <th>Shipping</th>
+                                        @if ($total >= 99)
+                                            <td class="d-flex justify-content-between">
+                                                <label for="shpping_free">Free</label>
+                                                <input type="radio" wire:model="shipping_amount" name="shipping" id="shpping_free" value="0.00">
+                                            </td>
+                                        @endif
+                                        @if ($total<=99)
+                                            <td class="d-flex justify-content-between">
+                                                <label for="shpping_normal">Normal ($6.95)</label>
+                                                <input type="radio" wire:model="shipping_amount" name="shipping" id="shpping_normal" value="6.95">
+                                            </td>
+                                        @endif
+                                        <td class="d-flex justify-content-between">
+                                            <label for="shpping_expedited">Expedited ($14.95)</label>
+                                            <input type="radio" wire:model="shipping_amount" name="shipping" id="shpping_expedited" value="14.95">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="cart_subtotal_main">
+                                <table class="table cart_subtotal">
                                     <tr>
                                         <th>Subtotal</th>
                                         <td>
@@ -144,7 +167,7 @@
                             <div class="total__main px-2">
                                 <p>TOTAL</p>
                                 <p>
-                                    $ {{ $total }}
+                                    $ {{ $grand_total }}
                                 </p>
                             </div>
                         </div>

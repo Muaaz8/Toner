@@ -125,6 +125,7 @@ Route::delete('products/{model}/force-delete', [ProductController::class, 'force
 Route::get('products/soft/deleted', [ProductController::class, 'softDeleted'])->name('products.softDeleted');
 Route::get('products_images', [ProductController::class, 'images'])->name('products.images');
 Route::delete('products_images_destroy/{id}', [ProductController::class, 'images_destroy'])->name('products.image_destroy');
+Route::post('product_post_update/{id}', [ProductController::class, 'post_update'])->name('products.post_update');
 
 
 // Routes for the CategoryController
@@ -148,3 +149,13 @@ Route::get('filter/families/{family_id}', [FilterController::class, 'filterByFam
 Route::get('all/orders', [App\Http\Controllers\HomeController::class, 'all_orders'])->name('orders');
 Route::get('order/{id}', [App\Http\Controllers\HomeController::class, 'order_detail'])->name('order_detail_page');
 Route::post('admin/update/order/{id}', [App\Http\Controllers\HomeController::class, 'order_update'])->name('order.update');
+
+
+
+////////////-------------------Static Pages--------------------\\\\\\\\\\\\\\\\
+Route::get('delivery_information', [App\Http\Controllers\GeneralController::class, 'delivery_information'])->name('delivery_information');
+Route::get('privacy_policy', [App\Http\Controllers\GeneralController::class, 'privacy_policy'])->name('privacy_policy');
+Route::get('terms_and_conditions', [App\Http\Controllers\GeneralController::class, 'terms_and_conditions'])->name('terms_and_conditions');
+Route::get('order_and_returns', [App\Http\Controllers\GeneralController::class, 'order_and_returns'])->name('order_and_returns');
+Route::get('customer_service', [App\Http\Controllers\GeneralController::class, 'customer_service'])->name('customer_service');
+Route::get('manufactures', [App\Http\Controllers\GeneralController::class, 'manufactures'])->name('manufactures');
