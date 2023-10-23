@@ -10,6 +10,32 @@
             <div class="row">
                 <div class="card">
                     <h5 class="card-header">Products</h5>
+                    {{-- <div class="accordion" id="accordionExample">
+                        <div class="accordion-item  mb-3">
+                            <h2 id="headingOne">
+                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Upload CSV
+                            </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <form action="">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <label for="csv"> Select CSV file:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="file" name="csv" id="csv">
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button class="btn btn-primary" type="submit">Submit</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            </div>
+                        </div>
+                    </div> --}}
                     <div class="table-responsive text-nowrap">
                         <div class="d-flex justify-content-end">
                             <a href="{{ route('products.create') }}"><button class="btn btn-primary me-2"> Add New Product </button></a>
