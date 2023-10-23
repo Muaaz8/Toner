@@ -77,7 +77,7 @@
                                     alt="product-image"
                                     />
                                     <img
-                                    src="{{ !$item->images[1] ? env('APP_URL').$item->images[0]->image:env('APP_URL').$item->images[1]->image }}"
+                                    src="{{ !isset($item->images[1]) ? env('APP_URL').$item->images[0]->image:env('APP_URL').$item->images[1]->image }}"
                                     class="item-img-2"
                                     alt="product-image2"
                                     />
