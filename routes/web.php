@@ -159,3 +159,6 @@ Route::get('terms_and_conditions', [App\Http\Controllers\GeneralController::clas
 Route::get('order_and_returns', [App\Http\Controllers\GeneralController::class, 'order_and_returns'])->name('order_and_returns');
 Route::get('customer_service', [App\Http\Controllers\GeneralController::class, 'customer_service'])->name('customer_service');
 Route::get('manufactures', [App\Http\Controllers\GeneralController::class, 'manufactures'])->name('manufactures');
+
+
+Route::post('upload_csv',[App\Http\Controllers\HomeController::class, 'uploadCSV'])->name('uploadCSV');

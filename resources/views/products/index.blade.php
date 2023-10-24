@@ -10,7 +10,14 @@
             <div class="row">
                 <div class="card">
                     <h5 class="card-header">Products</h5>
-                    {{-- <div class="accordion" id="accordionExample">
+                    <div class="d-flex justify-content-center">
+                        @if (session('message'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('message') }}
+                            </div>
+                        @endif
+                    </div>
+                    <div class="accordion" id="accordionExample">
                         <div class="accordion-item  mb-3">
                             <h2 id="headingOne">
                             <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -19,7 +26,8 @@
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <form action="">
+                                <form action="{{ route('uploadCSV') }}" enctype="multipart/form-data" method="post">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-md-3">
                                             <label for="csv"> Select CSV file:</label>
@@ -35,7 +43,7 @@
                             </div>
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="table-responsive text-nowrap">
                         <div class="d-flex justify-content-end">
                             <a href="{{ route('products.create') }}"><button class="btn btn-primary me-2"> Add New Product </button></a>

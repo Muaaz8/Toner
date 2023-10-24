@@ -115,7 +115,7 @@
                     <div data-i18n="Analytics">Contact Us</div>
                 </a>
             </li>
-            <!-- Layouts -->
+            {{-- <!-- Layouts -->
             <li class="menu-item">
                 <a href="javascript:void(0);" class="menu-link menu-toggle">
                     <i class="menu-icon tf-icons bx bx-layout"></i>
@@ -149,7 +149,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
         @elseif(Auth::user()->user_type == "user")
             <li class="menu-item">
                 <a href="{{ route('orders') }}" class="menu-link">
