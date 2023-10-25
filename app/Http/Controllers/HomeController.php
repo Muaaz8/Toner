@@ -95,7 +95,7 @@ class HomeController extends Controller
                         'description' => $data['Description'],
                         'stocks' => $data['Stocks'],
                     ]);
-                    foreach (explode("|",$data['Models']) as $key => $value) {
+                    foreach (explode(",",$data['Models']) as $key => $value) {
                         $model_id = PrinterModel::where('name','like','%'.$value.'%')->pluck('id')->first();
                         if($model_id != null){
                             ModelProduct::create([
