@@ -202,7 +202,7 @@ class ProductController extends Controller
 
     public function softDeleted()
     {
-        $softDeletedType = Product::onlyTrashed()->get();
+        $softDeletedType = Product::onlyTrashed()->where('brand_id','!=',null)->get();
 
         return view('products.soft_deleted', compact('softDeletedType'));
     }

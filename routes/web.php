@@ -75,6 +75,7 @@ Route::get('/special/products', function () {
     return view('view_special_products');
 })->name('special.products');
 
+Route::get('/download', [App\Http\Controllers\HomeController::class, 'downloadFile'])->name('download');
 Route::get('/shopping_cart',ShoppingCart::class)->name('shopping_cart');
 Route::get('/checkout',Checkout::class)->name('checkout');
 

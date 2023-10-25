@@ -120,4 +120,14 @@ class HomeController extends Controller
         }
     }
 
+    public function downloadFile()
+    {
+        $filePath = public_path('products.csv');
+        $headers = [
+            'Content-Type' => 'text/csv',
+        ];
+
+        return response()->download($filePath, 'products.csv', $headers);
+    }
+
 }
