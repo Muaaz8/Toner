@@ -46,16 +46,18 @@
                         </h3>
                         <div class="product__details_cont pt-3">
                             <p>
+                                @if ($data->brand_id != null)
                                 <span class="pro_det_spa">Brand: </span>
-                                <a href="#"> {{ $data->brand->name }}</a>
+                                    <a href="#"> {{ $data->brand->name }}</a>
+                                @endif
                             </p>
                             <p>
-                                <span class="pro_det_spa">Model Compatible with:
                                 @forelse ($data->models as $model)
+                                <span class="pro_det_spa">Model Compatible with:
                                     <a href="#">{{ $model->model->name }}</a>
+                                </span>
                                 @empty
                                 @endforelse
-                            </span>
                             </p>
                             <p class="py-3">{{ Str::limit($data->description,95) }}</p>
                         </div>
@@ -162,9 +164,13 @@
     <section class=" container sku_and_categories_main mb-3">
         <div>
             <p>
-                <span class="fw-bold">Family: </span> <span>{{ $data->family->name }}</span>
+                @if ($data->family_id != null)
+                    <span class="fw-bold">Family: </span> <span>{{ $data->family->name }}</span>
+                @endif
                 <br>
-                <span class="fw-bold">Type: </span> <span>{{ $data->type->name }}</span>
+                @if ($data->type_id != null)
+                    <span class="fw-bold">Type: </span> <span>{{ $data->type->name }}</span>
+                @endif
                 {{-- <span class="fw-bold">Tags:</span> <span>Coats,Knit,trending</span> --}}
             </p>
         </div>

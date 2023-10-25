@@ -110,6 +110,12 @@
                 </a>
             </li>
             <li class="menu-item">
+                <a href="{{ route('special_products.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Special Products</div>
+                </a>
+            </li>
+            <li class="menu-item">
                 <a href="{{ route('contact_us_show') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-home-circle"></i>
                     <div data-i18n="Analytics">Contact Us</div>

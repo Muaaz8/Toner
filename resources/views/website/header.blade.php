@@ -51,7 +51,7 @@
                         <a class="nav-link" href="{{ route('view_brand_details',['view_brand_details'=>'brands']) }}">Brands</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Special</a>
+                        <a class="nav-link" href="{{ route('special.products') }}">Special</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('contact_us') }}">Contact</a>

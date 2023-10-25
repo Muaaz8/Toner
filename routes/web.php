@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Order;
 use App\Models\Brand;
 use App\Models\Type;
+use App\Models\Product;
 use App\Models\ContactUs;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\TypeController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\PrinterModelController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SpecialProductController;
 
 use App\Http\Livewire\HomeProduct;
 use App\Http\Livewire\ShoppingCart;
@@ -68,6 +70,10 @@ Route::get('/order_confirmation/{id}', function ($id) {
 Route::get('/product_detail/{id}', function ($id) {
     return view('product_detail',compact('id'));
 })->name('product_detail');
+
+Route::get('/special/products', function () {
+    return view('view_special_products');
+})->name('special.products');
 
 Route::get('/shopping_cart',ShoppingCart::class)->name('shopping_cart');
 Route::get('/checkout',Checkout::class)->name('checkout');
@@ -126,6 +132,15 @@ Route::get('products/soft/deleted', [ProductController::class, 'softDeleted'])->
 Route::get('products_images', [ProductController::class, 'images'])->name('products.images');
 Route::delete('products_images_destroy/{id}', [ProductController::class, 'images_destroy'])->name('products.image_destroy');
 Route::post('product_post_update/{id}', [ProductController::class, 'post_update'])->name('products.post_update');
+
+// Routes for the SpecialProductController
+Route::resource('special_products', SpecialProductController::class);
+Route::put('special_products/{model}/restore', [SpecialProductController::class, 'restore'])->name('special_products.restore');
+Route::delete('special_products/{model}/force-delete', [SpecialProductController::class, 'forceDelete'])->name('special_products.forceDelete');
+Route::get('special_products/soft/deleted', [SpecialProductController::class, 'softDeleted'])->name('special_products.softDeleted');
+Route::get('special_products_images', [SpecialProductController::class, 'images'])->name('special_products.images');
+Route::delete('special_products_images_destroy/{id}', [SpecialProductController::class, 'images_destroy'])->name('special_products.image_destroy');
+// Route::post('product_post_update/{id}', [SpecialProductController::class, 'post_update'])->name('special_products.post_update');
 
 
 // Routes for the CategoryController

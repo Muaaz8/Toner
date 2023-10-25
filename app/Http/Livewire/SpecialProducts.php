@@ -15,50 +15,12 @@ use Illuminate\Support\Facades\Route;
 use Livewire\Component;
 use Request;
 
-class HomeProduct extends Component
+class SpecialProducts extends Component
 {
-
-    public $selected_brand_id = '';
-    public $selected_type_id = '';
-    public $selected_family_id = '';
-    public $selected_model_id = '';
-
     public function render()
     {
-        $brands = Brand::all();
-        if ($this->selected_brand_id != '') {
-            if ($this->selected_type_id != '') {
-                if ($this->selected_family_id != '') {
-                    $types = FilterController::filterByBrand($this->selected_brand_id)['types'];
-                    $families = FilterController::filterByType($this->selected_type_id)['families'];
-                    $filtered = FilterController::filterByFamily($this->selected_family_id);
-                    $models = $filtered['models'];
-                    $products = $filtered['products'];
-                } else {
-                    $types = FilterController::filterByBrand($this->selected_brand_id)['types'];
-                    $filtered = FilterController::filterByType($this->selected_type_id);
-                    $families = $filtered['families'];
-                    $models = $filtered['models'];
-                    $products = $filtered['products'];
-                }
-            } else {
-                $filtered = FilterController::filterByBrand($this->selected_brand_id);
-                $types = $filtered['types'];
-                $families = $filtered['families'];
-                $models = $filtered['models'];
-                $products = $filtered['products'];
-            }
-        } else {
-            $types = [];
-            $families = [];
-            $models = [];
-            if(Request::path() != "all_product"){
-                $products = Product::with('images')->where('brand_id','!=',null)->limit(4)->get();
-            }else{
-                $products = Product::with('images')->where('brand_id','!=',null)->get();
-            }
-        }
-        return view('livewire.home-product', compact('brands', 'types', 'families', 'models', 'products'));
+        $products = Product::where('brand_id',null)->get();
+        return view('livewire.special-products',compact('products'));
     }
 
     public function add_to_cart($val)
