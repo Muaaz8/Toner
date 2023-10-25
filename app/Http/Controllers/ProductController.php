@@ -17,7 +17,7 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $products = Product::with(['brand','type','family'])->get();
+        $products = Product::with(['brand','type','family'])->where('brand_id','!=',null)->get();
         return view('products.index', compact('products'));
     }
 

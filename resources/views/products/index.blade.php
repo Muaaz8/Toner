@@ -26,6 +26,7 @@
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
+                                <div class="d-flex justify-content-end mb-3"><button class="btn btn-primary">Download CSV Format</button></div>
                                 <form action="{{ route('uploadCSV') }}" enctype="multipart/form-data" method="post">
                                     @csrf
                                     <div class="row">
