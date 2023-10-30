@@ -134,3 +134,187 @@
 
 </section>
 <!-- =========== HEADER ENDS ==============  -->
+        <!-- =========== FOR MOBILE NAVBAR STARTS ==============  -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample"
+            aria-labelledby="offcanvasExampleLabel">
+
+            <div class="offcanvas-body">
+                <div class="">
+                    <div class="close_btn_MobNav" data-bs-dismiss="offcanvas" aria-label="Close">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </div>
+                    <a class="navbar-brand fw-bold p-0   mb-5" href="#">
+                        <img src="https://jew.zishstudio.com/wp-content/themes/elessi-theme/assets/images/logo.jpg"
+                            alt="">
+                    </a>
+                    <div class="filterMain_height">
+                        <div>
+                            <div class="categories__Main">
+                                <ul class="ul_style">
+                                    <a href="{{ url('/') }}">
+                                        <li>
+                                            <p
+                                                class="d-flex justify-content-between mb-2 border-top mt-4 mob_naV_linK">
+                                                <span class="active_link">Home</span>
+                                            </p>
+                                        </li>
+                                    </a>
+                                    <a href="{{ route('view_brand_details',['view_brand_details'=>'brands']) }}">
+                                        <li>
+                                            <p class="d-flex justify-content-between mb-2 mob_naV_linK">
+                                                <span class="active_link">Brands</span>
+                                            </p>
+                                        </li>
+                                    </a>
+                                    <a href="{{ route('special.products') }}">
+                                        <li>
+                                            <p class="d-flex justify-content-between mb-2 mob_naV_linK">
+                                                <span class="active_link">Special</span>
+                                            </p>
+                                        </li>
+                                    </a>
+                                    <a href="{{ route('contact_us') }}">
+                                        <li>
+                                            <p class="d-flex justify-content-between mb-2 mob_naV_linK">
+                                                <span class="active_link">Contact</span>
+                                            </p>
+                                        </li>
+                                    </a>
+                                    <a href="{{ route('shipping_and_tracking') }}">
+                                        <li>
+                                            <p class="d-flex justify-content-between mb-2 mob_naV_linK">
+                                                <span class="active_link">Shipping</span>
+                                            </p>
+                                        </li>
+                                    </a>
+
+                                    <!-- agr login hu ---  -->
+                                    <!-- <li class="mob_naV_linK">
+                          <p
+                            class="collapsed d-flex justify-content-between mb-2 "
+                            data-bs-toggle="collapse"
+                            data-bs-target="#account"
+                            aria-expanded="false"
+                            aria-controls="account"
+                          >
+                            <span>My Account</span>
+                            <span>
+                              <i class="fa-solid fa-plus"></i>
+                            </span>
+                          </p>
+                          <div>
+                            <div>
+                              <div
+                                id="account"
+                                class="accordion-collapse collapse"
+                                aria-labelledby="panelsStayOpen-heading4"
+                              >
+                                <ul>
+                                  <a href="/orders">
+                                    <li >Orders</li>
+                                  </a>
+                                  <a href="/reset-password">
+                                    <li >Reset Password</li>
+                                  </a>
+
+                                    <li>
+                                      <span onClick={handleLogout}>
+                              <i class="fa-solid fa-right-from-bracket"></i>{" "}
+                              Logout
+                            </span></li>
+
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </li> -->
+                                    <!-- agr login hu ---  -->
+                                    {{-- @livewire('login-modal') --}}
+
+                                    <li class="mob_naV_linK">
+                                        <i class="fa-regular fa-circle-user"></i>
+                                        <span data-bs-toggle="modal" data-bs-target="#loginModal">
+                                            &nbsp; Login / Register
+                                        </span>
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                            <div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- =========== FOR MOBILE NAVBAR ENDS ==============  -->
+        @livewire('login-modal')
+        <div>
+            <!-- =========== LOGIN MODAL STARTS ==============  -->
+            <div>
+                <div>
+                    <div class="modal fade" id="loginModal" tabIndex="-1" aria-labelledby="exampleModalLabel">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <div class="w-100 text-center position-relative">
+                                        <img src="https://jew.zishstudio.com/wp-content/themes/elessi-theme/assets/images/logo.jpg"
+                                            height="45" width="60" alt="" />
+                                        <button type="button" class="btn-close modal_close" data-bs-dismiss="modal"
+                                            aria-label="Close" id="closeButton"></button>
+                                    </div>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="login__maiN_">
+                                        <div class="form-section">
+                                            <div class="form-section">
+                                                <div class="login-box">
+                                                    <form method="post" action="{{ route('login') }}">
+                                                        @csrf
+                                                        <div class=" login__">
+                                                            <div class="mb-3">
+                                                                <label htmlFor="email" class="form-label">
+                                                                    Username or email
+                                                                    <span style="color: red;">*</span>
+                                                                </label>
+                                                                <input type="email" class="form-control"
+                                                                    id="email" name="email" />
+
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <label htmlFor="exampleFormControlInput2"
+                                                                        class="form-label">
+                                                                        Password <span style="color: red;">*</span>
+                                                                    </label>
+                                                                </div>
+                                                                <input type="password" class="form-control"
+                                                                    id="password" name="password" />
+
+                                                            </div>
+                                                            <button class="sign_blue_btn" type="submit">
+                                                                <Spinner color="white" /> SIGN IN TO YOUR ACCOUNT
+                                                            </button>
+                                                            <div class="text-center mt-3">
+                                                                <p>
+                                                                    Not a member?
+                                                                    <span>
+                                                                        <a href="{{ route('register') }}">Create an
+                                                                            account</a>
+                                                                    </span>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- =========== LOGIN MODAL ENDS ==============  -->
+            </div>
+        </div>
