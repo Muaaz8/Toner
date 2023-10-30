@@ -79,8 +79,16 @@ class HomeController extends Controller
             foreach ($csv as $row) {
                 $data = array_combine($header, $row);
                 $brand_id = Brand::where('name','like','%'.$data['Brand'].'%')->pluck('id')->first();
-                $family_id = Family::where('name','like','%'.$data['Family'].'%')->pluck('id')->first();
-                $type_id = Type::where('name','like','%'.$data['Type'].'%')->pluck('id')->first();
+                if($data['Family'] != ""){
+                    $family_id = Family::where('name','like','%'.$data['Family'].'%')->pluck('id')->first();
+                }else{
+                    $family_id = null;
+                }
+                if($data['Type'] != ""){
+                    $type_id = Type::where('name','like','%'.$data['Type'].'%')->pluck('id')->first();
+                }else{
+                    $type_id = null;
+                }
                 $check = Product::where('name','like','%'.$data['Name'].'%')
                 ->where('brand_id',$brand_id)
                 ->where('family_id',$family_id)
