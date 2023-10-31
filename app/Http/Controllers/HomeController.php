@@ -114,10 +114,12 @@ class HomeController extends Controller
                     }
 
                     foreach (explode("|",$data['image']) as $image) {
-                        ImagesProduct::create([
-                            'product_id'=>$product->id,
-                            'image'=>'uploads/'.$image,
-                        ]);
+                        if($image != ""){
+                            ImagesProduct::create([
+                                'product_id'=>$product->id,
+                                'image'=>'uploads/'.$image,
+                            ]);
+                        }
                     }
                 }
             }
