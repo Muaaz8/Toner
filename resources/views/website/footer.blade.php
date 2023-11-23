@@ -36,6 +36,7 @@
                                 <ul class="courses-link-list">
                                     <li><a href="{{ route('customer_service') }}">Customer Service</a></li>
                                     <li><a href="{{ route('manufactures') }}">Manufactures</a></li>
+                                    <li><a href="{{ route('about_us') }}">About Us</a></li>
                                 </ul>
                             </div>
                         </div><!-- widget end -->

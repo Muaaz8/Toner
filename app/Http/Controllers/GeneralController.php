@@ -25,4 +25,7 @@ class GeneralController extends Controller
     public function manufactures(){
         return view('static_pages.manufacturers');
     }
+    public function about_us(){
+        return view('static_pages.about_us');
+    }
 }
