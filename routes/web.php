@@ -15,6 +15,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FilterController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SpecialProductController;
+use App\Http\Controllers\TblContentController;
 
 use App\Http\Livewire\HomeProduct;
 use App\Http\Livewire\ShoppingCart;
@@ -149,6 +150,10 @@ Route::resource('categories', CategoryController::class);
 Route::put('categories/{category}/restore', [CategoryController::class, 'restore'])->name('categories.restore');
 Route::delete('categories/{category}/force-delete', [CategoryController::class, 'forceDelete'])->name('categories.forceDelete');
 
+// Route for the ContentController
+Route::resource('dynamic_contents', TblContentController::class);
+
+
 
 ////////////-------------------Filter routes--------------------\\\\\\\\\\\\\\\\
 
@@ -176,6 +181,8 @@ Route::get('order_and_returns', [App\Http\Controllers\GeneralController::class, 
 Route::get('customer_service', [App\Http\Controllers\GeneralController::class, 'customer_service'])->name('customer_service');
 Route::get('manufactures', [App\Http\Controllers\GeneralController::class, 'manufactures'])->name('manufactures');
 Route::get('about_us', [App\Http\Controllers\GeneralController::class, 'about_us'])->name('about_us');
+
+Route::get('content_pages/{name}', [App\Http\Controllers\GeneralController::class, 'content_pages'])->name('content_pages');
 
 
 Route::post('upload_csv',[App\Http\Controllers\HomeController::class, 'uploadCSV'])->name('uploadCSV');

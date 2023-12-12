@@ -20,3 +20,19 @@
 
  <!-- Place this tag in your head or just before your close body tag. -->
  <script async defer src="https://buttons.github.io/buttons.js"></script>
+ <script>
+    $(document).ready(function () {
+        // ========== For Navbar Active starts ==============
+        jQuery(function($) {
+        var path = window.location.href;
+        console.log(path)
+        $('.menu-item a').each(function() {
+            if (this.href === path) {
+                $(this).parent(".menu-item").addClass('active');
+                $(this).addClass('active');
+            }
+            });
+        });
+    // ========== For Navbar Active Ends ==============
+    });
+</script>

@@ -21,31 +21,10 @@
         <section class="py-5 my-5">
             <div class="container">
                 <div class="text-center">
-                    <h1 class="fs-4">About Us</h1>
+                    <h1 class="fs-4">{{ $content->name }}</h1>
                     <div class="border p-3 rounded-3">
                         <div class="d-flex flex-column gap-4">
-                            <p>Embrace a printing revolution with Tonercycle, where our commitment to sustainability intertwines seamlessly with cutting-edge quality.
-                                Our remanufactured toner cartridges embark on a journey of renewal, meticulously curated to not just meet industry standards but to redefine them.</p>
-
-                            <h4>**1. Eco-Champion:**</h4>
-
-                                Embrace a profound commitment to environmental stewardship. Our remanufactured toner cartridges transcend mere recycling—they embody a transformative journey of repurposing and refurbishing. This approach not only minimizes waste but actively contributes to a circular economy. By choosing Tonercycle, you become a partner in the quest for sustainable printing practices, leaving an indelible, eco-friendly impact.
-
-                            <h4>**2. Priceless Affordability:**</h4>
-
-                                Immerse yourself in a paradigm where affordability meets excellence. Our commitment to providing high-quality prints at a fraction of the cost of brand-new cartridges isn't just a promise; it's a financial liberation. Experience the richness of top-tier printing without compromising your budget, unlocking a realm where economic sensibility and print quality coexist harmoniously.
-
-                            <h4>**3. Quality Orchestration:**</h4>
-
-                                Witness the meticulous orchestration of quality assurance. Each remanufactured cartridge undergoes a symphony of tests, ensuring not only compliance with industry standards but the surpassing of expectations. This dedication to precision results in a print performance that stands as a testament to our unwavering commitment to excellence—every print, a masterpiece in its own right.
-
-                            <h4>**4. Universal Harmony:**</h4>
-
-                                Explore the universality of compatibility. Our remanufactured cartridges are crafted to seamlessly integrate with a diverse range of printer models. This isn't just about fit; it's about the harmonious fusion of technology and convenience. The result is an elevated printing experience, where your equipment and our cartridges coalesce seamlessly, creating a synergy that enhances the overall performance of your printing setup.
-
-                            <h4>**Choosing Tonercycle: An Ode to Responsible Printing:**</h4>
-
-                                Selecting Tonercycle isn't just a transaction; it's a conscious choice for responsible printing. Our brand isn't merely about providing cartridges; it's about architecting a future where sustainability, cost-effectiveness, and innovation converge. Join us in crafting a narrative where the act of printing becomes a symphony of responsible choices—each page, a note in the song of a more sustainable tomorrow.
+                            {!! $content->content !!}
                         </div>
                     </div>
                   </div>

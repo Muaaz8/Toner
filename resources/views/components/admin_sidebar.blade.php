@@ -60,7 +60,7 @@
 
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
-        <li class="menu-item active">
+        <li class="menu-item">
             <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
@@ -119,6 +119,12 @@
                 <a href="{{ route('contact_us_show') }}" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-home-circle"></i>
                     <div data-i18n="Analytics">Contact Us</div>
+                </a>
+            </li>
+            <li class="menu-item">
+                <a href="{{ route('dynamic_contents.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                    <div data-i18n="Analytics">Content Page</div>
                 </a>
             </li>
             {{-- <!-- Layouts -->

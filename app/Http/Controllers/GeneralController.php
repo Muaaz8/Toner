@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Tbl_Content;
 
 class GeneralController extends Controller
 {
@@ -27,5 +28,10 @@ class GeneralController extends Controller
     }
     public function about_us(){
         return view('static_pages.about_us');
+    }
+
+    public function content_pages($name){
+        $content = Tbl_Content::where('slug',$name)->first();
+        return view('static_pages.about_us',compact('content'));
     }
 }
