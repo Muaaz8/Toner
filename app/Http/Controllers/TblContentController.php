@@ -111,4 +111,52 @@ class TblContentController extends Controller
 
         return redirect()->route('dynamic_contents.index')->with('success', 'Content deleted successfully');
     }
+
+
+    public function list_logo(){
+        $contents = Tbl_Content::where('name','logo')->get();
+        return view('logo.index', compact('contents'));
+    }
+
+    public function logo_create(){
+        return view('logo.create');
+    }
+
+    public function logo_store(Request $request){
+        $exist = Tbl_Content::where('slug','logo')->first();
+        if($exist != null){
+            Tbl_Content::where('slug','logo')->delete();
+        }
+        $extension = $request->content->getClientOriginalExtension();
+        $filename = time().rand(1,50).'.' . $extension;
+        $request->content->move(public_path('uploads/'), $filename);
+        Tbl_Content::create([
+            'name' => $request->input('name'),
+            'slug' => \Str::slug($request->input('name')),
+            'content'=>'uploads/'.$filename,
+        ]);
+        return redirect()->route('logo')->with('success', 'Logo Added successfully');
+    }
+
+    public function list_location(){
+        $locations = Tbl_Content::where('name','location')->get();
+        return view('location.index', compact('locations'));
+    }
+
+    public function location_create(){
+        return view('location.create');
+    }
+
+    public function location_store(Request $request){
+        $exist = Tbl_Content::where('slug','location')->first();
+        if($exist != null){
+            Tbl_Content::where('slug','logo')->delete();
+        }
+        Tbl_Content::create([
+            'name' => $request->input('name'),
+            'slug' => \Str::slug($request->input('name')),
+            'content'=> $request->input('content'),
+        ]);
+        return redirect()->route('location')->with('success', 'Location Added successfully');
+    }
 }

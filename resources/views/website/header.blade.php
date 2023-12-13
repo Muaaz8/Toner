@@ -1,4 +1,7 @@
 <!-- =========== HEADER Starts ==============  -->
+@php
+    $logo = App\Models\Tbl_Content::where('slug','logo')->first();
+@endphp
 <section>
     <header class="bg-light py-2 d-none d-md-flex">
         <div class="container">
@@ -34,8 +37,13 @@
     <nav class="d-none d-lg-flex navbar navbar-expand-lg navbar-light ">
         <div class="container">
             <a class="navbar-brand fw-bold" href="{{ url('/') }}">
-                <img src="https://jew.zishstudio.com/wp-content/themes/elessi-theme/assets/images/logo.jpg"
-                    alt="">
+                @if ($logo != null)
+                    <img src="\{{ $logo->content }}"
+                        alt="logo" style="height:50px;">
+                @else
+                    <img src="https://jew.zishstudio.com/wp-content/uploads/2017/11/logo.png"
+                        alt="logo" height="150px">
+                @endif
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"

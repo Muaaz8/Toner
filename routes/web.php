@@ -152,7 +152,12 @@ Route::delete('categories/{category}/force-delete', [CategoryController::class, 
 
 // Route for the ContentController
 Route::resource('dynamic_contents', TblContentController::class);
-
+Route::get('logo',[TblContentController::class,'list_logo'])->name('logo');
+Route::get('logo_create',[TblContentController::class,'logo_create'])->name('logo.create');
+Route::post('logo_store',[TblContentController::class,'logo_store'])->name('logo.store');
+Route::get('location',[TblContentController::class,'list_location'])->name('location');
+Route::get('location_create',[TblContentController::class,'location_create'])->name('location.create');
+Route::post('location_store',[TblContentController::class,'location_store'])->name('location.store');
 
 
 ////////////-------------------Filter routes--------------------\\\\\\\\\\\\\\\\

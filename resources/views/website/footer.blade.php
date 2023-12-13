@@ -7,21 +7,36 @@
                         <div class="col-lg-3 col-md-6 col-sm-6">
                             <div class="widget company-intro-widget">
                                 <a href="index.html" class="site-logo">
-                                    <img src="https://jew.zishstudio.com/wp-content/uploads/2017/11/logo.png"
-                                        alt="logo">
+                                    @php
+                                        $logo = App\Models\Tbl_Content::where('slug','logo')->first();
+                                    @endphp
+                                    @if ($logo != null)
+                                        <img src="\{{ $logo->content }}"
+                                            alt="logo" height="150px">
+                                    @else
+                                        <img src="https://jew.zishstudio.com/wp-content/uploads/2017/11/logo.png"
+                                            alt="logo" height="150px">
+                                    @endif
                                 </a>
-                                <p>57 hillhurst cres.</p>
-                                <ul class="company-footer-contact-list">
-                                    <li></i>Courtice</li>
-                                    <li></i>Ontario</li>
-                                    <li></i>L1E2A4</li>
-                                </ul>
-                                <p>(+01)-800-3456-88</p>
+                                @php
+                                    $location = App\Models\Tbl_Content::where('slug','location')->first();
+                                @endphp
+                                @if ($location != null)
+                                    {!! $location->content !!}
+                                @else
+                                    <p>57 hillhurst cres.</p>
+                                    <ul class="company-footer-contact-list">
+                                        <li></i>Courtice</li>
+                                        <li></i>Ontario</li>
+                                        <li></i>L1E2A4</li>
+                                    </ul>
+                                    <p>(+01)-800-3456-88</p>
+                                @endif
                             </div>
                         </div>
                         <!-- widget end -->
                         @php
-                            $heads = App\Models\Tbl_Content::get();
+                            $heads = App\Models\Tbl_Content::where('slug','!=','logo')->where('slug','!=','location')->get();
                             $perLine = round(count($heads)/2);
                         @endphp
                         <div class="col-lg-3 col-md-6 col-sm-6">
