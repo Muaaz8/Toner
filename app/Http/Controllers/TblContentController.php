@@ -14,7 +14,7 @@ class TblContentController extends Controller
      */
     public function index()
     {
-        $contents = Tbl_Content::all();
+        $contents = Tbl_Content::where('slug','!=','logo')->where('slug','!=','location')->get();
         return view('content.index', compact('contents'));
     }
 
