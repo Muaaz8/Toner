@@ -150,7 +150,7 @@ class TblContentController extends Controller
     public function location_store(Request $request){
         $exist = Tbl_Content::where('slug','location')->first();
         if($exist != null){
-            Tbl_Content::where('slug','logo')->delete();
+            Tbl_Content::where('slug','location')->delete();
         }
         Tbl_Content::create([
             'name' => $request->input('name'),
